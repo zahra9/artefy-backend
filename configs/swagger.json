@@ -1,0 +1,5681 @@
+{
+  "swagger": "2.0",
+  "info": {
+    "version": "1.0",
+    "title": "Artefy_v2",
+    "contact": {}
+  },
+  "host": "localhost:5000",
+  "basePath": "/",
+  "schemes": ["http"],
+  "consumes": ["application/json"],
+  "produces": ["application/json"],
+  "paths": {
+    "/artist": {
+      "post": {
+        "summary": "Artist",
+        "tags": ["Artist"],
+        "operationId": "Artist",
+        "deprecated": false,
+        "produces": ["application/json; charset=utf-8"],
+        "parameters": [
+          {
+            "name": "x-auth-token",
+            "in": "header",
+            "required": true,
+            "type": "string",
+            "description": ""
+          },
+          {
+            "name": "Body",
+            "in": "body",
+            "required": true,
+            "description": "",
+            "schema": {
+              "$ref": "#/definitions/ArtistRequest"
+            }
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "OK",
+            "schema": {
+              "$ref": "#/definitions/Artist"
+            },
+            "examples": {
+              "application/json; charset=utf-8": {
+                "message": "Artist added successfully"
+              }
+            },
+            "headers": {
+              "X-Powered-By": {
+                "type": "string",
+                "default": "Express"
+              },
+              "Access-Control-Allow-Origin": {
+                "type": "string",
+                "default": "*"
+              },
+              "Content-Length": {
+                "type": "string",
+                "default": "39"
+              },
+              "ETag": {
+                "type": "string",
+                "default": "W/\"27-C4Fd/R3xOCAA13Su3AxolyPC0ak\""
+              },
+              "Date": {
+                "type": "string",
+                "default": "Wed, 16 Jun 2021 07:50:36 GMT"
+              },
+              "Connection": {
+                "type": "string",
+                "default": "keep-alive"
+              },
+              "Keep-Alive": {
+                "type": "string",
+                "default": "timeout=5"
+              }
+            }
+          }
+        }
+      },
+      "get": {
+        "summary": "Artist details",
+        "tags": ["Artist"],
+        "operationId": "Artistdetails",
+        "deprecated": false,
+        "produces": ["application/json; charset=utf-8"],
+        "parameters": [
+          {
+            "name": "artistId",
+            "in": "query",
+            "required": true,
+            "type": "string",
+            "description": ""
+          },
+          {
+            "name": "page",
+            "in": "query",
+            "required": true,
+            "type": "integer",
+            "format": "int32",
+            "description": ""
+          },
+          {
+            "name": "numberOfRows",
+            "in": "query",
+            "required": true,
+            "type": "integer",
+            "format": "int32",
+            "description": ""
+          },
+          {
+            "name": "search",
+            "in": "query",
+            "required": true,
+            "type": "string",
+            "description": ""
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "OK",
+            "schema": {
+              "$ref": "#/definitions/GetArtists"
+            },
+            "examples": {
+              "application/json; charset=utf-8": {
+                "artists": [
+                  {
+                    "paintings": [],
+                    "collections": [],
+                    "_id": "60f69d63d75352405fe01e89",
+                    "name": "Simpson",
+                    "tagline": "is Great",
+                    "banner": "bannerLink",
+                    "profileImage": "profileLink",
+                    "bio": "It is a long established fact that a reader will be distracted by the readable content of a page when looking at its layout.",
+                    "tags": "Fantasy, Horror, Sci-fi",
+                    "worldID": "60f695d436d46436a3e6971b",
+                    "createdAt": "2021-07-20T09:54:43.627Z",
+                    "updatedAt": "2021-07-20T09:54:43.627Z",
+                    "__v": 0
+                  },
+                  {
+                    "paintings": [],
+                    "collections": [],
+                    "_id": "60f69d75d75352405fe01e8a",
+                    "name": "Simpson",
+                    "tagline": "is Great",
+                    "banner": "bannerLink",
+                    "profileImage": "profileLink",
+                    "bio": "It is a long established fact that a reader will be distracted by the readable content of a page when looking at its layout.",
+                    "tags": "Fantasy, Horror, Sci-fi",
+                    "worldID": "60f695ff36d46436a3e6971c",
+                    "createdAt": "2021-07-20T09:55:01.815Z",
+                    "updatedAt": "2021-07-20T09:55:01.815Z",
+                    "__v": 0
+                  }
+                ],
+                "Total": 2,
+                "NumberOfPages": 1
+              }
+            },
+            "headers": {
+              "X-Powered-By": {
+                "type": "string",
+                "default": "Express"
+              },
+              "Access-Control-Allow-Origin": {
+                "type": "string",
+                "default": "*"
+              },
+              "Content-Length": {
+                "type": "string",
+                "default": "931"
+              },
+              "ETag": {
+                "type": "string",
+                "default": "W/\"3a3-6cfmGIs56KXUK4jmCytpeO3ZAMU\""
+              },
+              "Date": {
+                "type": "string",
+                "default": "Tue, 20 Jul 2021 09:58:16 GMT"
+              },
+              "Connection": {
+                "type": "string",
+                "default": "keep-alive"
+              },
+              "Keep-Alive": {
+                "type": "string",
+                "default": "timeout=5"
+              }
+            }
+          }
+        }
+      }
+    },
+    "/artist/{artistId}": {
+      "put": {
+        "summary": "Update Artist",
+        "tags": ["Artist"],
+        "operationId": "UpdateArtist",
+        "deprecated": false,
+        "produces": ["application/json; charset=utf-8"],
+        "parameters": [
+          {
+            "name": "artistId",
+            "in": "path",
+            "required": true,
+            "type": "string",
+            "description": ""
+          },
+          {
+            "name": "x-auth-token",
+            "in": "header",
+            "required": true,
+            "type": "string",
+            "description": ""
+          },
+          {
+            "name": "Body",
+            "in": "body",
+            "required": true,
+            "description": "",
+            "schema": {
+              "$ref": "#/definitions/UpdateArtistRequest"
+            }
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "OK",
+            "schema": {
+              "$ref": "#/definitions/UpdateArtist"
+            },
+            "examples": {
+              "application/json; charset=utf-8": {
+                "message": "Artist updated"
+              }
+            },
+            "headers": {
+              "X-Powered-By": {
+                "type": "string",
+                "default": "Express"
+              },
+              "Access-Control-Allow-Origin": {
+                "type": "string",
+                "default": "*"
+              },
+              "Content-Length": {
+                "type": "string",
+                "default": "28"
+              },
+              "ETag": {
+                "type": "string",
+                "default": "W/\"1c-ZIDBRN4Cf6xrZbLuMUKUNW6IqGA\""
+              },
+              "Date": {
+                "type": "string",
+                "default": "Mon, 19 Jul 2021 07:50:27 GMT"
+              },
+              "Connection": {
+                "type": "string",
+                "default": "keep-alive"
+              },
+              "Keep-Alive": {
+                "type": "string",
+                "default": "timeout=5"
+              }
+            }
+          }
+        }
+      }
+    },
+    "/artist/{artistId}/painting": {
+      "put": {
+        "summary": "Painting to artist",
+        "tags": ["Painting"],
+        "operationId": "Paintingtoartist",
+        "deprecated": false,
+        "produces": ["application/json; charset=utf-8"],
+        "parameters": [
+          {
+            "name": "artistId",
+            "in": "path",
+            "required": true,
+            "type": "string",
+            "description": ""
+          },
+          {
+            "name": "x-auth-token",
+            "in": "header",
+            "required": true,
+            "type": "string",
+            "description": ""
+          },
+          {
+            "name": "Body",
+            "in": "body",
+            "required": true,
+            "description": "",
+            "schema": {
+              "$ref": "#/definitions/PaintingtoartistRequest"
+            }
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "OK",
+            "schema": {
+              "$ref": "#/definitions/Putpaintingtoartist"
+            },
+            "examples": {
+              "application/json; charset=utf-8": {
+                "mints": [],
+                "_id": "60f6a88ca814f0711fbc87ef",
+                "dropDate": "2016-05-18T16:00:00Z",
+                "genre": "Sci-fi",
+                "image": "http://localhost:5000/imageLink",
+                "file": "http://localhost:5000/fileLink",
+                "title": "Simp's masterpiece",
+                "theme": "red",
+                "set": 15,
+                "pieceNumber": 150,
+                "pointVal": 200,
+                "description": "It is a long established fact that a reader will be distracted by the readable content of a page when looking at its layout.",
+                "format": "format",
+                "size": "Large",
+                "rarity": "Jewel",
+                "fileType": "PNG",
+                "fractionalOwnership": "false",
+                "allowStaking": "true",
+                "artistID": "60f69d63d75352405fe01e89",
+                "worldID": "60f695d436d46436a3e6971b",
+                "__v": 0
+              }
+            },
+            "headers": {
+              "X-Powered-By": {
+                "type": "string",
+                "default": "Express"
+              },
+              "Access-Control-Allow-Origin": {
+                "type": "string",
+                "default": "*"
+              },
+              "Content-Length": {
+                "type": "string",
+                "default": "610"
+              },
+              "ETag": {
+                "type": "string",
+                "default": "W/\"262-cPWdCQe+JHxrvJHaDiMEJIYw7uM\""
+              },
+              "Date": {
+                "type": "string",
+                "default": "Tue, 20 Jul 2021 10:42:20 GMT"
+              },
+              "Connection": {
+                "type": "string",
+                "default": "keep-alive"
+              },
+              "Keep-Alive": {
+                "type": "string",
+                "default": "timeout=5"
+              }
+            }
+          }
+        },
+        "security": []
+      },
+      "get": {
+        "summary": "Artist Painting/s",
+        "tags": ["Painting"],
+        "operationId": "ArtistPainting/s",
+        "deprecated": false,
+        "produces": ["application/json; charset=utf-8"],
+        "parameters": [
+          {
+            "name": "paintingId",
+            "in": "query",
+            "required": true,
+            "type": "string",
+            "description": ""
+          },
+          {
+            "name": "page",
+            "in": "query",
+            "required": true,
+            "type": "integer",
+            "format": "int32",
+            "description": ""
+          },
+          {
+            "name": "numberOfRows",
+            "in": "query",
+            "required": true,
+            "type": "integer",
+            "format": "int32",
+            "description": ""
+          },
+          {
+            "name": "artistId",
+            "in": "path",
+            "required": true,
+            "type": "string",
+            "description": ""
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "OK",
+            "schema": {
+              "type": "array",
+              "items": {
+                "$ref": "#/definitions/GetArtistPainting~1"
+              }
+            },
+            "examples": {
+              "application/json; charset=utf-8": [
+                {
+                  "_id": "60c98fcc8b6415714bbabaaa",
+                  "paintings": [
+                    {
+                      "_id": "60c9a55d3c2f6119f780f836",
+                      "image": "imageLink",
+                      "file": "fileLink",
+                      "title": "Abhinav's masterpiece",
+                      "year": 2000,
+                      "theme": "red",
+                      "set": 15,
+                      "pieceNumber": 150,
+                      "pointVal": 200,
+                      "description": "description",
+                      "format": "format",
+                      "size": "2px",
+                      "rarity": "highly exp",
+                      "fileType": "PNG",
+                      "fractionalOwnership": "false",
+                      "allowStaking": "true",
+                      "artistID": "60c98fcc8b6415714bbabaaa",
+                      "mints": []
+                    }
+                  ]
+                }
+              ]
+            },
+            "headers": {
+              "X-Powered-By": {
+                "type": "string",
+                "default": "Express"
+              },
+              "Access-Control-Allow-Origin": {
+                "type": "string",
+                "default": "*"
+              },
+              "Content-Length": {
+                "type": "string",
+                "default": "422"
+              },
+              "ETag": {
+                "type": "string",
+                "default": "W/\"1a6-P29VXXUHo25RAYoxKg1Pwx3AwKw\""
+              },
+              "Date": {
+                "type": "string",
+                "default": "Wed, 16 Jun 2021 07:17:22 GMT"
+              },
+              "Connection": {
+                "type": "string",
+                "default": "keep-alive"
+              },
+              "Keep-Alive": {
+                "type": "string",
+                "default": "timeout=5"
+              }
+            }
+          }
+        },
+        "security": []
+      },
+      "delete": {
+        "summary": "painting from Artist",
+        "tags": ["Painting"],
+        "operationId": "paintingfromArtist",
+        "deprecated": false,
+        "produces": ["application/json; charset=utf-8"],
+        "parameters": [
+          {
+            "name": "artistId",
+            "in": "path",
+            "required": true,
+            "type": "string",
+            "description": ""
+          },
+          {
+            "name": "x-auth-token",
+            "in": "header",
+            "required": true,
+            "type": "string",
+            "description": ""
+          },
+          {
+            "name": "Body",
+            "in": "body",
+            "required": true,
+            "description": "",
+            "schema": {
+              "$ref": "#/definitions/paintingfromArtistRequest"
+            }
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "OK",
+            "schema": {
+              "$ref": "#/definitions/Deletepaintings"
+            },
+            "examples": {
+              "application/json; charset=utf-8": {
+                "n": 1,
+                "nModified": 1,
+                "ok": 1
+              }
+            },
+            "headers": {
+              "X-Powered-By": {
+                "type": "string",
+                "default": "Express"
+              },
+              "Access-Control-Allow-Origin": {
+                "type": "string",
+                "default": "*"
+              },
+              "Content-Length": {
+                "type": "string",
+                "default": "28"
+              },
+              "ETag": {
+                "type": "string",
+                "default": "W/\"1c-9CSp0YZbwVi1S/g+0CyT4pOh1+k\""
+              },
+              "Date": {
+                "type": "string",
+                "default": "Wed, 16 Jun 2021 07:00:00 GMT"
+              },
+              "Connection": {
+                "type": "string",
+                "default": "keep-alive"
+              },
+              "Keep-Alive": {
+                "type": "string",
+                "default": "timeout=5"
+              }
+            }
+          }
+        },
+        "security": []
+      }
+    },
+    "/artist/{artistId}/collection/{collectionId}/painting": {
+      "put": {
+        "summary": "Add painting to collection",
+        "tags": ["Painting"],
+        "operationId": "Addpaintingtocollection",
+        "deprecated": false,
+        "produces": ["application/json; charset=utf-8"],
+        "parameters": [
+          {
+            "name": "artistId",
+            "in": "path",
+            "required": true,
+            "type": "string",
+            "description": ""
+          },
+          {
+            "name": "collectionId",
+            "in": "path",
+            "required": true,
+            "type": "string",
+            "description": ""
+          },
+          {
+            "name": "x-auth-token",
+            "in": "header",
+            "required": true,
+            "type": "string",
+            "description": ""
+          },
+          {
+            "name": "Body",
+            "in": "body",
+            "required": true,
+            "description": "",
+            "schema": {
+              "$ref": "#/definitions/AddpaintingtocollectionRequest"
+            }
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "OK",
+            "schema": {
+              "$ref": "#/definitions/Addpaintingtocollection"
+            },
+            "examples": {
+              "application/json; charset=utf-8": {
+                "mints": [],
+                "_id": "60f6c507e5c11d3fc1f5d25e",
+                "dropDate": "2016-05-18T16:00:00Z",
+                "genre": "Sci-fi",
+                "image": "http://localhost:5000/imageLink",
+                "file": "http://localhost:5000/fileLink",
+                "title": "Simp's masterpiece",
+                "theme": "red",
+                "set": 15,
+                "pieceNumber": 150,
+                "pointVal": 200,
+                "description": "It is a long established fact that a reader will be distracted by the readable content of a page when looking at its layout.",
+                "format": "format",
+                "size": "Large",
+                "rarity": "Jewel",
+                "fileType": "PNG",
+                "fractionalOwnership": "false",
+                "allowStaking": "true",
+                "artistID": "60f69d63d75352405fe01e89",
+                "collectionID": "60f6bba5c5d5ef33e8edfd40",
+                "worldID": "60f695d436d46436a3e6971b",
+                "__v": 0
+              }
+            },
+            "headers": {
+              "X-Powered-By": {
+                "type": "string",
+                "default": "Express"
+              },
+              "Access-Control-Allow-Origin": {
+                "type": "string",
+                "default": "*"
+              },
+              "Content-Length": {
+                "type": "string",
+                "default": "652"
+              },
+              "ETag": {
+                "type": "string",
+                "default": "W/\"28c-dUzX6AoqOEGjFBndGi2kBA4r7JI\""
+              },
+              "Date": {
+                "type": "string",
+                "default": "Tue, 20 Jul 2021 12:43:51 GMT"
+              },
+              "Connection": {
+                "type": "string",
+                "default": "keep-alive"
+              },
+              "Keep-Alive": {
+                "type": "string",
+                "default": "timeout=5"
+              }
+            }
+          }
+        },
+        "security": []
+      },
+      "delete": {
+        "summary": "Painting from collection",
+        "tags": ["Painting"],
+        "operationId": "Paintingfromcollection",
+        "deprecated": false,
+        "produces": ["application/json; charset=utf-8"],
+        "parameters": [
+          {
+            "name": "artistId",
+            "in": "path",
+            "required": true,
+            "type": "string",
+            "description": ""
+          },
+          {
+            "name": "collectionId",
+            "in": "path",
+            "required": true,
+            "type": "string",
+            "description": ""
+          },
+          {
+            "name": "x-auth-token",
+            "in": "header",
+            "required": true,
+            "type": "string",
+            "description": ""
+          },
+          {
+            "name": "Body",
+            "in": "body",
+            "required": true,
+            "description": "",
+            "schema": {
+              "$ref": "#/definitions/PaintingfromcollectionRequest"
+            }
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "OK",
+            "schema": {
+              "$ref": "#/definitions/Deletepaintingfromcollection"
+            },
+            "examples": {
+              "application/json; charset=utf-8": {
+                "n": 1,
+                "nModified": 1,
+                "ok": 1
+              }
+            },
+            "headers": {
+              "X-Powered-By": {
+                "type": "string",
+                "default": "Express"
+              },
+              "Access-Control-Allow-Origin": {
+                "type": "string",
+                "default": "*"
+              },
+              "Content-Length": {
+                "type": "string",
+                "default": "28"
+              },
+              "ETag": {
+                "type": "string",
+                "default": "W/\"1c-9CSp0YZbwVi1S/g+0CyT4pOh1+k\""
+              },
+              "Date": {
+                "type": "string",
+                "default": "Thu, 17 Jun 2021 03:46:04 GMT"
+              },
+              "Connection": {
+                "type": "string",
+                "default": "keep-alive"
+              },
+              "Keep-Alive": {
+                "type": "string",
+                "default": "timeout=5"
+              }
+            }
+          }
+        },
+        "security": []
+      },
+      "get": {
+        "summary": "Collection Paintings",
+        "tags": ["Painting"],
+        "operationId": "CollectionPaintings",
+        "deprecated": false,
+        "produces": ["application/json; charset=utf-8"],
+        "parameters": [
+          {
+            "name": "page",
+            "in": "query",
+            "required": true,
+            "type": "integer",
+            "format": "int32",
+            "description": ""
+          },
+          {
+            "name": "numberOfRows",
+            "in": "query",
+            "required": true,
+            "type": "integer",
+            "format": "int32",
+            "description": ""
+          },
+          {
+            "name": "artistId",
+            "in": "path",
+            "required": true,
+            "type": "string",
+            "description": ""
+          },
+          {
+            "name": "collectionId",
+            "in": "path",
+            "required": true,
+            "type": "string",
+            "description": ""
+          },
+          {
+            "name": "x-auth-token",
+            "in": "header",
+            "required": true,
+            "type": "string",
+            "description": ""
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "OK",
+            "schema": {
+              "$ref": "#/definitions/GetCollectionPaintings"
+            },
+            "examples": {
+              "application/json; charset=utf-8": {
+                "paintings": [
+                  {
+                    "mints": [],
+                    "_id": "60f6c507e5c11d3fc1f5d25e",
+                    "dropDate": "2016-05-18T16:00:00Z",
+                    "genre": "Sci-fi",
+                    "image": "http://localhost:5000/imageLink",
+                    "file": "http://localhost:5000/fileLink",
+                    "title": "Simp's masterpiece",
+                    "theme": "red",
+                    "set": 15,
+                    "pieceNumber": 150,
+                    "pointVal": 200,
+                    "description": "It is a long established fact that a reader will be distracted by the readable content of a page when looking at its layout.",
+                    "format": "format",
+                    "size": "Large",
+                    "rarity": "Jewel",
+                    "fileType": "PNG",
+                    "fractionalOwnership": "false",
+                    "allowStaking": "true",
+                    "artistID": "60f69d63d75352405fe01e89",
+                    "collectionID": "60f6bba5c5d5ef33e8edfd40",
+                    "worldID": "60f695d436d46436a3e6971b",
+                    "__v": 0
+                  }
+                ],
+                "Total": 1,
+                "NumberOfPages": 1
+              }
+            },
+            "headers": {
+              "X-Powered-By": {
+                "type": "string",
+                "default": "Express"
+              },
+              "Access-Control-Allow-Origin": {
+                "type": "string",
+                "default": "*"
+              },
+              "Content-Length": {
+                "type": "string",
+                "default": "696"
+              },
+              "ETag": {
+                "type": "string",
+                "default": "W/\"2b8-QI7yhbROR4ERl50VgLOR+/UJuY8\""
+              },
+              "Date": {
+                "type": "string",
+                "default": "Tue, 20 Jul 2021 13:03:42 GMT"
+              },
+              "Connection": {
+                "type": "string",
+                "default": "keep-alive"
+              },
+              "Keep-Alive": {
+                "type": "string",
+                "default": "timeout=5"
+              }
+            }
+          }
+        },
+        "security": []
+      }
+    },
+    "/artist/{artistId}/collection": {
+      "post": {
+        "summary": "Add Collections",
+        "tags": ["Collection"],
+        "operationId": "AddCollections",
+        "deprecated": false,
+        "produces": ["application/json; charset=utf-8"],
+        "parameters": [
+          {
+            "name": "artistId",
+            "in": "path",
+            "required": true,
+            "type": "string",
+            "description": ""
+          },
+          {
+            "name": "x-auth-token",
+            "in": "header",
+            "required": true,
+            "type": "string",
+            "description": ""
+          },
+          {
+            "name": "Body",
+            "in": "body",
+            "required": true,
+            "description": "",
+            "schema": {
+              "$ref": "#/definitions/AddCollectionsRequest"
+            }
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "OK",
+            "schema": {
+              "$ref": "#/definitions/AddCollections"
+            },
+            "examples": {
+              "application/json; charset=utf-8": {
+                "paintings": [],
+                "_id": "60f6bbdbc5d5ef33e8edfd41",
+                "name": "Cool Collection",
+                "logo": "http://localhost:5000/coolimage",
+                "artistID": "60f69d75d75352405fe01e8a",
+                "worldID": "60f695ff36d46436a3e6971c",
+                "__v": 0
+              }
+            },
+            "headers": {
+              "X-Powered-By": {
+                "type": "string",
+                "default": "Express"
+              },
+              "Access-Control-Allow-Origin": {
+                "type": "string",
+                "default": "*"
+              },
+              "Content-Length": {
+                "type": "string",
+                "default": "198"
+              },
+              "ETag": {
+                "type": "string",
+                "default": "W/\"c6-pT9N30jpXekAJD5ysiw2w12Gbu0\""
+              },
+              "Date": {
+                "type": "string",
+                "default": "Tue, 20 Jul 2021 12:04:43 GMT"
+              },
+              "Connection": {
+                "type": "string",
+                "default": "keep-alive"
+              },
+              "Keep-Alive": {
+                "type": "string",
+                "default": "timeout=5"
+              }
+            }
+          }
+        },
+        "security": []
+      },
+      "get": {
+        "summary": "Get Collections",
+        "tags": ["Collection"],
+        "operationId": "GetCollections",
+        "deprecated": false,
+        "produces": ["application/json; charset=utf-8"],
+        "parameters": [
+          {
+            "name": "collectionId",
+            "in": "query",
+            "required": true,
+            "type": "string",
+            "description": ""
+          },
+          {
+            "name": "page",
+            "in": "query",
+            "required": true,
+            "type": "integer",
+            "format": "int32",
+            "description": ""
+          },
+          {
+            "name": "numberOfRows",
+            "in": "query",
+            "required": true,
+            "type": "integer",
+            "format": "int32",
+            "description": ""
+          },
+          {
+            "name": "artistId",
+            "in": "path",
+            "required": true,
+            "type": "string",
+            "description": ""
+          },
+          {
+            "name": "x-auth-token",
+            "in": "header",
+            "required": true,
+            "type": "string",
+            "description": ""
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "OK",
+            "schema": {
+              "type": "array",
+              "items": {
+                "$ref": "#/definitions/Getcollection"
+              }
+            },
+            "examples": {
+              "application/json; charset=utf-8": [
+                {
+                  "paintings": [],
+                  "_id": "60cabd399a85971e3766855f",
+                  "name": "New dasdfew",
+                  "logo": "Collection Logo Link",
+                  "artistID": "60c9c52fa8d37a6a003637fd",
+                  "__v": 0
+                }
+              ]
+            },
+            "headers": {
+              "X-Powered-By": {
+                "type": "string",
+                "default": "Express"
+              },
+              "Access-Control-Allow-Origin": {
+                "type": "string",
+                "default": "*"
+              },
+              "Content-Length": {
+                "type": "string",
+                "default": "148"
+              },
+              "ETag": {
+                "type": "string",
+                "default": "W/\"94-EbgRIRxiw+KxU9RkaATgzuYU10w\""
+              },
+              "Date": {
+                "type": "string",
+                "default": "Thu, 17 Jun 2021 04:06:20 GMT"
+              },
+              "Connection": {
+                "type": "string",
+                "default": "keep-alive"
+              },
+              "Keep-Alive": {
+                "type": "string",
+                "default": "timeout=5"
+              }
+            }
+          }
+        },
+        "security": []
+      },
+      "delete": {
+        "summary": "Remove Collections",
+        "tags": ["Collection"],
+        "operationId": "RemoveCollections",
+        "deprecated": false,
+        "produces": ["application/json; charset=utf-8"],
+        "parameters": [
+          {
+            "name": "artistId",
+            "in": "path",
+            "required": true,
+            "type": "string",
+            "description": ""
+          },
+          {
+            "name": "x-auth-token",
+            "in": "header",
+            "required": true,
+            "type": "string",
+            "description": ""
+          },
+          {
+            "name": "Body",
+            "in": "body",
+            "required": true,
+            "description": "",
+            "schema": {
+              "$ref": "#/definitions/RemoveCollectionsRequest"
+            }
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "OK",
+            "schema": {
+              "$ref": "#/definitions/RemoveCollections"
+            },
+            "examples": {
+              "application/json; charset=utf-8": {
+                "n": 1,
+                "nModified": 1,
+                "ok": 1
+              }
+            },
+            "headers": {
+              "X-Powered-By": {
+                "type": "string",
+                "default": "Express"
+              },
+              "Access-Control-Allow-Origin": {
+                "type": "string",
+                "default": "*"
+              },
+              "Content-Length": {
+                "type": "string",
+                "default": "28"
+              },
+              "ETag": {
+                "type": "string",
+                "default": "W/\"1c-9CSp0YZbwVi1S/g+0CyT4pOh1+k\""
+              },
+              "Date": {
+                "type": "string",
+                "default": "Wed, 16 Jun 2021 10:33:41 GMT"
+              },
+              "Connection": {
+                "type": "string",
+                "default": "keep-alive"
+              },
+              "Keep-Alive": {
+                "type": "string",
+                "default": "timeout=5"
+              }
+            }
+          }
+        },
+        "security": []
+      }
+    },
+    "/artist/{artistId}/collection/{collectionId}": {
+      "put": {
+        "summary": "Collection",
+        "tags": ["Collection"],
+        "operationId": "Collection",
+        "deprecated": false,
+        "produces": ["application/json; charset=utf-8"],
+        "parameters": [
+          {
+            "name": "artistId",
+            "in": "path",
+            "required": true,
+            "type": "string",
+            "description": ""
+          },
+          {
+            "name": "collectionId",
+            "in": "path",
+            "required": true,
+            "type": "string",
+            "description": ""
+          },
+          {
+            "name": "x-auth-token",
+            "in": "header",
+            "required": true,
+            "type": "string",
+            "description": ""
+          },
+          {
+            "name": "Body",
+            "in": "body",
+            "required": true,
+            "description": "",
+            "schema": {
+              "$ref": "#/definitions/CollectionRequest"
+            }
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "OK",
+            "schema": {
+              "$ref": "#/definitions/Collection1"
+            },
+            "examples": {
+              "application/json; charset=utf-8": {
+                "message": "Collection updated"
+              }
+            },
+            "headers": {
+              "X-Powered-By": {
+                "type": "string",
+                "default": "Express"
+              },
+              "Access-Control-Allow-Origin": {
+                "type": "string",
+                "default": "*"
+              },
+              "Content-Length": {
+                "type": "string",
+                "default": "32"
+              },
+              "ETag": {
+                "type": "string",
+                "default": "W/\"20-U5BHRAZLY1vvK/vFWwENPYxBpHI\""
+              },
+              "Date": {
+                "type": "string",
+                "default": "Tue, 20 Jul 2021 12:12:21 GMT"
+              },
+              "Connection": {
+                "type": "string",
+                "default": "keep-alive"
+              },
+              "Keep-Alive": {
+                "type": "string",
+                "default": "timeout=5"
+              }
+            }
+          }
+        },
+        "security": []
+      }
+    },
+    "/artist/{artistId}/mint/painting/{paintingId}": {
+      "put": {
+        "summary": "Add mints to Painting",
+        "tags": ["Mint"],
+        "operationId": "AddmintstoPainting",
+        "deprecated": false,
+        "produces": ["application/json; charset=utf-8"],
+        "parameters": [
+          {
+            "name": "artistId",
+            "in": "path",
+            "required": true,
+            "type": "string",
+            "description": ""
+          },
+          {
+            "name": "paintingId",
+            "in": "path",
+            "required": true,
+            "type": "string",
+            "description": ""
+          },
+          {
+            "name": "x-auth-token",
+            "in": "header",
+            "required": true,
+            "type": "string",
+            "description": ""
+          },
+          {
+            "name": "Body",
+            "in": "body",
+            "required": true,
+            "description": "",
+            "schema": {
+              "example": [
+                {
+                  "name": "mint1",
+                  "tokenId": "token#1",
+                  "timestamp": "1623912277106",
+                  "sale": {
+                    "active": false,
+                    "price": "0"
+                  }
+                },
+                {
+                  "name": "mint2",
+                  "tokenId": "token#2",
+                  "timestamp": "1623912277106",
+                  "sale": {
+                    "active": false,
+                    "price": "0"
+                  }
+                }
+              ],
+              "type": "array",
+              "items": {
+                "$ref": "#/definitions/AddmintstoPaintingRequest"
+              }
+            }
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "OK",
+            "schema": {
+              "$ref": "#/definitions/AddmintstoPainting"
+            },
+            "examples": {
+              "application/json; charset=utf-8": {
+                "n": 1,
+                "nModified": 1,
+                "ok": 1
+              }
+            },
+            "headers": {
+              "X-Powered-By": {
+                "type": "string",
+                "default": "Express"
+              },
+              "Access-Control-Allow-Origin": {
+                "type": "string",
+                "default": "*"
+              },
+              "Content-Length": {
+                "type": "string",
+                "default": "28"
+              },
+              "ETag": {
+                "type": "string",
+                "default": "W/\"1c-9CSp0YZbwVi1S/g+0CyT4pOh1+k\""
+              },
+              "Date": {
+                "type": "string",
+                "default": "Thu, 17 Jun 2021 07:33:29 GMT"
+              },
+              "Connection": {
+                "type": "string",
+                "default": "keep-alive"
+              },
+              "Keep-Alive": {
+                "type": "string",
+                "default": "timeout=5"
+              }
+            }
+          }
+        },
+        "security": []
+      }
+    },
+    "/artist/{artistId}/mint/collection/{collectionId}/painting/{paintingId}": {
+      "put": {
+        "summary": "Add mints to Collection Painting",
+        "tags": ["Mint"],
+        "operationId": "AddmintstoCollectionPainting",
+        "deprecated": false,
+        "produces": ["application/json; charset=utf-8"],
+        "parameters": [
+          {
+            "name": "artistId",
+            "in": "path",
+            "required": true,
+            "type": "string",
+            "description": ""
+          },
+          {
+            "name": "collectionId",
+            "in": "path",
+            "required": true,
+            "type": "string",
+            "description": ""
+          },
+          {
+            "name": "paintingId",
+            "in": "path",
+            "required": true,
+            "type": "string",
+            "description": ""
+          },
+          {
+            "name": "x-auth-token",
+            "in": "header",
+            "required": true,
+            "type": "string",
+            "description": ""
+          },
+          {
+            "name": "Body",
+            "in": "body",
+            "required": true,
+            "description": "",
+            "schema": {
+              "example": [
+                {
+                  "name": "mint1",
+                  "tokenId": "token#1",
+                  "timestamp": "1623912277106",
+                  "sale": {
+                    "active": false,
+                    "price": "0"
+                  }
+                },
+                {
+                  "name": "mint2",
+                  "tokenId": "token#2",
+                  "timestamp": "1623912277106",
+                  "sale": {
+                    "active": false,
+                    "price": "0"
+                  }
+                }
+              ],
+              "type": "array",
+              "items": {
+                "$ref": "#/definitions/AddmintstoCollectionPaintingRequest"
+              }
+            }
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "OK",
+            "schema": {
+              "$ref": "#/definitions/AddmintstoCollectionPainting"
+            },
+            "examples": {
+              "application/json; charset=utf-8": {
+                "n": 1,
+                "nModified": 1,
+                "ok": 1
+              }
+            },
+            "headers": {
+              "X-Powered-By": {
+                "type": "string",
+                "default": "Express"
+              },
+              "Access-Control-Allow-Origin": {
+                "type": "string",
+                "default": "*"
+              },
+              "Content-Length": {
+                "type": "string",
+                "default": "28"
+              },
+              "ETag": {
+                "type": "string",
+                "default": "W/\"1c-9CSp0YZbwVi1S/g+0CyT4pOh1+k\""
+              },
+              "Date": {
+                "type": "string",
+                "default": "Thu, 17 Jun 2021 07:54:46 GMT"
+              },
+              "Connection": {
+                "type": "string",
+                "default": "keep-alive"
+              },
+              "Keep-Alive": {
+                "type": "string",
+                "default": "timeout=5"
+              }
+            }
+          }
+        },
+        "security": []
+      }
+    },
+    "/artist/{paintingId}/mint": {
+      "put": {
+        "summary": "Mint",
+        "tags": ["Mint"],
+        "operationId": "Mint",
+        "deprecated": false,
+        "produces": ["application/json; charset=utf-8"],
+        "parameters": [
+          {
+            "name": "paintingId",
+            "in": "path",
+            "required": true,
+            "type": "string",
+            "description": ""
+          },
+          {
+            "name": "x-auth-token",
+            "in": "header",
+            "required": true,
+            "type": "string",
+            "description": ""
+          },
+          {
+            "name": "Body",
+            "in": "body",
+            "required": true,
+            "description": "",
+            "schema": {
+              "$ref": "#/definitions/MintRequest"
+            }
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "OK",
+            "schema": {
+              "$ref": "#/definitions/Mint"
+            },
+            "examples": {
+              "application/json; charset=utf-8": {
+                "message": "Mints updated"
+              }
+            },
+            "headers": {
+              "X-Powered-By": {
+                "type": "string",
+                "default": "Express"
+              },
+              "Access-Control-Allow-Origin": {
+                "type": "string",
+                "default": "*"
+              },
+              "Content-Length": {
+                "type": "string",
+                "default": "27"
+              },
+              "ETag": {
+                "type": "string",
+                "default": "W/\"1b-MHms5JVA/aPPkABYPiHq4EGSiWY\""
+              },
+              "Date": {
+                "type": "string",
+                "default": "Wed, 21 Jul 2021 05:16:19 GMT"
+              },
+              "Connection": {
+                "type": "string",
+                "default": "keep-alive"
+              },
+              "Keep-Alive": {
+                "type": "string",
+                "default": "timeout=5"
+              }
+            }
+          }
+        }
+      }
+    },
+    "/artist/mint": {
+      "get": {
+        "summary": "Mint/s",
+        "tags": ["Mint"],
+        "operationId": "Mint/s",
+        "deprecated": false,
+        "produces": ["application/json; charset=utf-8"],
+        "parameters": [
+          {
+            "name": "page",
+            "in": "query",
+            "required": true,
+            "type": "integer",
+            "format": "int32",
+            "description": ""
+          },
+          {
+            "name": "numberOfRows",
+            "in": "query",
+            "required": true,
+            "type": "integer",
+            "format": "int32",
+            "description": ""
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "OK",
+            "schema": {
+              "$ref": "#/definitions/MintById"
+            },
+            "examples": {
+              "application/json; charset=utf-8": {
+                "currentBuyer": "",
+                "pastBuyers": [],
+                "_id": "60f7a7fe14b41631d860ce84",
+                "name": "mint",
+                "tokenId": "token#1",
+                "timestamp": "2021-06-17T06:44:37.106Z",
+                "sale": {
+                  "price": 50,
+                  "orderID": "",
+                  "captureID": "",
+                  "sold": false,
+                  "_id": "60f7a7fe14b41631d860ce85",
+                  "active": true
+                },
+                "paintingID": "60f6a88ca814f0711fbc87ef",
+                "__v": 0
+              }
+            },
+            "headers": {
+              "X-Powered-By": {
+                "type": "string",
+                "default": "Express"
+              },
+              "Access-Control-Allow-Origin": {
+                "type": "string",
+                "default": "*"
+              },
+              "Content-Length": {
+                "type": "string",
+                "default": "297"
+              },
+              "ETag": {
+                "type": "string",
+                "default": "W/\"129-UMWN0KANxQEciKc5n2pNvumTEhA\""
+              },
+              "Date": {
+                "type": "string",
+                "default": "Mon, 26 Jul 2021 05:30:03 GMT"
+              },
+              "Connection": {
+                "type": "string",
+                "default": "keep-alive"
+              },
+              "Keep-Alive": {
+                "type": "string",
+                "default": "timeout=5"
+              }
+            }
+          }
+        }
+      }
+    },
+    "/artist/{artistId}/transaction/collection/{collectionId}/painting/{paintingId}": {
+      "put": {
+        "summary": "Add Transaction to Collection Paintings",
+        "tags": ["Transaction"],
+        "operationId": "AddTransactiontoCollectionPaintings",
+        "deprecated": false,
+        "produces": ["application/json"],
+        "parameters": [
+          {
+            "name": "artistId",
+            "in": "path",
+            "required": true,
+            "type": "string",
+            "description": ""
+          },
+          {
+            "name": "collectionId",
+            "in": "path",
+            "required": true,
+            "type": "string",
+            "description": ""
+          },
+          {
+            "name": "paintingId",
+            "in": "path",
+            "required": true,
+            "type": "string",
+            "description": ""
+          },
+          {
+            "name": "x-auth-token",
+            "in": "header",
+            "required": true,
+            "type": "string",
+            "description": ""
+          },
+          {
+            "name": "Body",
+            "in": "body",
+            "required": true,
+            "description": "",
+            "schema": {
+              "$ref": "#/definitions/AddTransactiontoCollectionPaintingsRequest"
+            }
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "",
+            "headers": {}
+          }
+        },
+        "security": []
+      }
+    },
+    "/artist/{artistId}/transaction/painting/{paintingId}": {
+      "put": {
+        "summary": "Add Transaction Paintings",
+        "tags": ["Transaction"],
+        "operationId": "AddTransactionPaintings",
+        "deprecated": false,
+        "produces": ["application/json; charset=utf-8"],
+        "parameters": [
+          {
+            "name": "artistId",
+            "in": "path",
+            "required": true,
+            "type": "string",
+            "description": ""
+          },
+          {
+            "name": "paintingId",
+            "in": "path",
+            "required": true,
+            "type": "string",
+            "description": ""
+          },
+          {
+            "name": "x-auth-token",
+            "in": "header",
+            "required": true,
+            "type": "string",
+            "description": ""
+          },
+          {
+            "name": "Body",
+            "in": "body",
+            "required": true,
+            "description": "",
+            "schema": {
+              "$ref": "#/definitions/AddTransactionPaintingsRequest"
+            }
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "OK",
+            "schema": {
+              "$ref": "#/definitions/AddTransactionPaintings"
+            },
+            "examples": {
+              "application/json; charset=utf-8": {
+                "n": 2,
+                "nModified": 2,
+                "ok": 1
+              }
+            },
+            "headers": {
+              "X-Powered-By": {
+                "type": "string",
+                "default": "Express"
+              },
+              "Access-Control-Allow-Origin": {
+                "type": "string",
+                "default": "*"
+              },
+              "Content-Length": {
+                "type": "string",
+                "default": "28"
+              },
+              "ETag": {
+                "type": "string",
+                "default": "W/\"1c-uKOVJ8aR/ERt7/CEKFiepF+pJqs\""
+              },
+              "Date": {
+                "type": "string",
+                "default": "Thu, 17 Jun 2021 11:54:21 GMT"
+              },
+              "Connection": {
+                "type": "string",
+                "default": "keep-alive"
+              },
+              "Keep-Alive": {
+                "type": "string",
+                "default": "timeout=5"
+              }
+            }
+          }
+        },
+        "security": []
+      }
+    },
+    "/world": {
+      "post": {
+        "summary": "World",
+        "tags": ["Worlds"],
+        "operationId": "World",
+        "deprecated": false,
+        "produces": ["application/json; charset=utf-8"],
+        "parameters": [
+          {
+            "name": "x-auth-token",
+            "in": "header",
+            "required": true,
+            "type": "string",
+            "description": ""
+          },
+          {
+            "name": "Body",
+            "in": "body",
+            "required": true,
+            "description": "",
+            "schema": {
+              "$ref": "#/definitions/WorldRequest"
+            }
+          }
+        ],
+        "responses": {
+          "201": {
+            "description": "Created",
+            "schema": {
+              "$ref": "#/definitions/CreateWorld"
+            },
+            "examples": {
+              "application/json; charset=utf-8": {
+                "message": "World Everscapes created successfully"
+              }
+            },
+            "headers": {
+              "X-Powered-By": {
+                "type": "string",
+                "default": "Express"
+              },
+              "Access-Control-Allow-Origin": {
+                "type": "string",
+                "default": "*"
+              },
+              "Content-Length": {
+                "type": "string",
+                "default": "51"
+              },
+              "ETag": {
+                "type": "string",
+                "default": "W/\"33-KTzgXDdWQ7BDY6l6KFqhFD8RHo8\""
+              },
+              "Date": {
+                "type": "string",
+                "default": "Tue, 20 Jul 2021 08:53:38 GMT"
+              },
+              "Connection": {
+                "type": "string",
+                "default": "keep-alive"
+              },
+              "Keep-Alive": {
+                "type": "string",
+                "default": "timeout=5"
+              }
+            }
+          }
+        }
+      },
+      "get": {
+        "summary": "World",
+        "tags": ["Worlds"],
+        "operationId": "GetWorld",
+        "deprecated": false,
+        "produces": ["application/json; charset=utf-8"],
+        "parameters": [
+          {
+            "name": "page",
+            "in": "query",
+            "required": true,
+            "type": "integer",
+            "format": "int32",
+            "description": ""
+          },
+          {
+            "name": "numberOfRows",
+            "in": "query",
+            "required": true,
+            "type": "integer",
+            "format": "int32",
+            "description": ""
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "OK",
+            "schema": {
+              "$ref": "#/definitions/World"
+            },
+            "examples": {
+              "application/json; charset=utf-8": {
+                "worlds": [
+                  {
+                    "artists": [],
+                    "drops": [],
+                    "_id": "60f691069be5bf32e40668db",
+                    "name": "Everscapes",
+                    "description": "It is a long established fact that a reader will be distracted by the readable content of a page when looking at its layout.",
+                    "logo": "http://localhost:5000/everscapes",
+                    "tagline": "The home of fantasy, sci-fi and Horror",
+                    "__v": 0
+                  }
+                ],
+                "totalNumberOfWorlds": 1,
+                "numberOfPages": 1
+              }
+            },
+            "headers": {
+              "X-Powered-By": {
+                "type": "string",
+                "default": "Express"
+              },
+              "Access-Control-Allow-Origin": {
+                "type": "string",
+                "default": "*"
+              },
+              "Content-Length": {
+                "type": "string",
+                "default": "375"
+              },
+              "ETag": {
+                "type": "string",
+                "default": "W/\"177-M3jf6u9hBzBa++INXObs/he+zUM\""
+              },
+              "Date": {
+                "type": "string",
+                "default": "Tue, 20 Jul 2021 09:03:01 GMT"
+              },
+              "Connection": {
+                "type": "string",
+                "default": "keep-alive"
+              },
+              "Keep-Alive": {
+                "type": "string",
+                "default": "timeout=5"
+              }
+            }
+          }
+        }
+      }
+    },
+    "/world/{worldId}": {
+      "put": {
+        "summary": "World",
+        "tags": ["Worlds"],
+        "operationId": "PutWorld",
+        "deprecated": false,
+        "produces": ["application/json; charset=utf-8"],
+        "parameters": [
+          {
+            "name": "worldId",
+            "in": "path",
+            "required": true,
+            "type": "string",
+            "description": ""
+          },
+          {
+            "name": "x-auth-token",
+            "in": "header",
+            "required": true,
+            "type": "string",
+            "description": ""
+          },
+          {
+            "name": "Body",
+            "in": "body",
+            "required": true,
+            "description": "",
+            "schema": {
+              "$ref": "#/definitions/WorldRequest1"
+            }
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "OK",
+            "schema": {
+              "$ref": "#/definitions/World2"
+            },
+            "examples": {
+              "application/json; charset=utf-8": {
+                "message": "World updated successfully"
+              }
+            },
+            "headers": {
+              "X-Powered-By": {
+                "type": "string",
+                "default": "Express"
+              },
+              "Access-Control-Allow-Origin": {
+                "type": "string",
+                "default": "*"
+              },
+              "Content-Length": {
+                "type": "string",
+                "default": "40"
+              },
+              "ETag": {
+                "type": "string",
+                "default": "W/\"28-9wMlwXd/ql1YrEgbMJDMmMyT4Qg\""
+              },
+              "Date": {
+                "type": "string",
+                "default": "Tue, 20 Jul 2021 09:17:28 GMT"
+              },
+              "Connection": {
+                "type": "string",
+                "default": "keep-alive"
+              },
+              "Keep-Alive": {
+                "type": "string",
+                "default": "timeout=5"
+              }
+            }
+          }
+        }
+      }
+    },
+    "/drop": {
+      "post": {
+        "summary": "Drop",
+        "tags": ["Drop"],
+        "operationId": "Drop",
+        "deprecated": false,
+        "produces": ["application/json; charset=utf-8"],
+        "parameters": [
+          {
+            "name": "x-auth-token",
+            "in": "header",
+            "required": true,
+            "type": "string",
+            "description": ""
+          },
+          {
+            "name": "Body",
+            "in": "body",
+            "required": true,
+            "description": "",
+            "schema": {
+              "$ref": "#/definitions/DropRequest"
+            }
+          }
+        ],
+        "responses": {
+          "201": {
+            "description": "Created",
+            "schema": {
+              "$ref": "#/definitions/Drop"
+            },
+            "examples": {
+              "application/json; charset=utf-8": {
+                "message": "Drop created successfully"
+              }
+            },
+            "headers": {
+              "X-Powered-By": {
+                "type": "string",
+                "default": "Express"
+              },
+              "Access-Control-Allow-Origin": {
+                "type": "string",
+                "default": "*"
+              },
+              "Content-Length": {
+                "type": "string",
+                "default": "39"
+              },
+              "ETag": {
+                "type": "string",
+                "default": "W/\"27-rFsBVeE8fuJT6fbdLzxxgy3XTUc\""
+              },
+              "Date": {
+                "type": "string",
+                "default": "Wed, 21 Jul 2021 09:13:13 GMT"
+              },
+              "Connection": {
+                "type": "string",
+                "default": "keep-alive"
+              },
+              "Keep-Alive": {
+                "type": "string",
+                "default": "timeout=5"
+              }
+            }
+          }
+        }
+      },
+      "get": {
+        "summary": "Drop",
+        "tags": ["Drop"],
+        "operationId": "GetDrop",
+        "deprecated": false,
+        "produces": ["application/json; charset=utf-8"],
+        "parameters": [
+          {
+            "name": "page",
+            "in": "query",
+            "required": true,
+            "type": "integer",
+            "format": "int32",
+            "description": ""
+          },
+          {
+            "name": "numberOfRows",
+            "in": "query",
+            "required": true,
+            "type": "integer",
+            "format": "int32",
+            "description": ""
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "OK",
+            "schema": {
+              "type": "array",
+              "items": {
+                "$ref": "#/definitions/Drop1"
+              }
+            },
+            "examples": {
+              "application/json; charset=utf-8": [
+                {
+                  "paintings": [],
+                  "collections": [],
+                  "artists": [],
+                  "_id": "60f7e5281be29a3d2d349d3f",
+                  "name": "Fantasy Launch Drop",
+                  "releaseTime": "2021-07-21T09:11:52Z",
+                  "logo": "http://localhost:5000/drop-wall",
+                  "worldID": "60f695d436d46436a3e6971b",
+                  "__v": 0
+                }
+              ]
+            },
+            "headers": {
+              "X-Powered-By": {
+                "type": "string",
+                "default": "Express"
+              },
+              "Access-Control-Allow-Origin": {
+                "type": "string",
+                "default": "*"
+              },
+              "Content-Length": {
+                "type": "string",
+                "default": "237"
+              },
+              "ETag": {
+                "type": "string",
+                "default": "W/\"ed-S/U0LaZpjuGvrJvGe05FSOePEFs\""
+              },
+              "Date": {
+                "type": "string",
+                "default": "Wed, 21 Jul 2021 09:14:14 GMT"
+              },
+              "Connection": {
+                "type": "string",
+                "default": "keep-alive"
+              },
+              "Keep-Alive": {
+                "type": "string",
+                "default": "timeout=5"
+              }
+            }
+          }
+        }
+      }
+    },
+    "/drop/{dropId}": {
+      "put": {
+        "summary": "Drop",
+        "tags": ["Drop"],
+        "operationId": "PutDrop",
+        "deprecated": false,
+        "produces": ["application/json; charset=utf-8"],
+        "parameters": [
+          {
+            "name": "dropId",
+            "in": "path",
+            "required": true,
+            "type": "string",
+            "description": ""
+          },
+          {
+            "name": "x-auth-token",
+            "in": "header",
+            "required": true,
+            "type": "string",
+            "description": ""
+          },
+          {
+            "name": "Body",
+            "in": "body",
+            "required": true,
+            "description": "",
+            "schema": {
+              "$ref": "#/definitions/DropRequest1"
+            }
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "OK",
+            "schema": {
+              "$ref": "#/definitions/Drop"
+            },
+            "examples": {
+              "application/json; charset=utf-8": {
+                "message": "Drop updated successfully"
+              }
+            },
+            "headers": {
+              "X-Powered-By": {
+                "type": "string",
+                "default": "Express"
+              },
+              "Access-Control-Allow-Origin": {
+                "type": "string",
+                "default": "*"
+              },
+              "Content-Length": {
+                "type": "string",
+                "default": "39"
+              },
+              "ETag": {
+                "type": "string",
+                "default": "W/\"27-BPopT1NTUqvhtGULTE2cNsgI1Y0\""
+              },
+              "Date": {
+                "type": "string",
+                "default": "Wed, 21 Jul 2021 09:19:17 GMT"
+              },
+              "Connection": {
+                "type": "string",
+                "default": "keep-alive"
+              },
+              "Keep-Alive": {
+                "type": "string",
+                "default": "timeout=5"
+              }
+            }
+          }
+        }
+      }
+    },
+    "/drop/{dropId}/update": {
+      "put": {
+        "summary": "Add ids to Drop",
+        "tags": ["Drop"],
+        "operationId": "AddidstoDrop",
+        "deprecated": false,
+        "produces": ["application/json; charset=utf-8"],
+        "parameters": [
+          {
+            "name": "dropId",
+            "in": "path",
+            "required": true,
+            "type": "string",
+            "description": ""
+          },
+          {
+            "name": "x-auth-token",
+            "in": "header",
+            "required": true,
+            "type": "string",
+            "description": ""
+          },
+          {
+            "name": "Body",
+            "in": "body",
+            "required": true,
+            "description": "",
+            "schema": {
+              "$ref": "#/definitions/AddidstoDropRequest"
+            }
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "OK",
+            "schema": {
+              "$ref": "#/definitions/AddidstoDrop"
+            },
+            "examples": {
+              "application/json; charset=utf-8": {
+                "message": "Drop updated successfully"
+              }
+            },
+            "headers": {
+              "X-Powered-By": {
+                "type": "string",
+                "default": "Express"
+              },
+              "Access-Control-Allow-Origin": {
+                "type": "string",
+                "default": "*"
+              },
+              "Content-Length": {
+                "type": "string",
+                "default": "39"
+              },
+              "ETag": {
+                "type": "string",
+                "default": "W/\"27-BPopT1NTUqvhtGULTE2cNsgI1Y0\""
+              },
+              "Date": {
+                "type": "string",
+                "default": "Wed, 21 Jul 2021 11:30:01 GMT"
+              },
+              "Connection": {
+                "type": "string",
+                "default": "keep-alive"
+              },
+              "Keep-Alive": {
+                "type": "string",
+                "default": "timeout=5"
+              }
+            }
+          }
+        }
+      }
+    },
+    "/drop/{dropId}/paintings": {
+      "get": {
+        "summary": "Drop paintings",
+        "tags": ["Drop"],
+        "operationId": "Droppaintings",
+        "deprecated": false,
+        "produces": ["application/json; charset=utf-8"],
+        "parameters": [
+          {
+            "name": "page",
+            "in": "query",
+            "required": true,
+            "type": "integer",
+            "format": "int32",
+            "description": ""
+          },
+          {
+            "name": "numberOfRows",
+            "in": "query",
+            "required": true,
+            "type": "integer",
+            "format": "int32",
+            "description": ""
+          },
+          {
+            "name": "dropId",
+            "in": "path",
+            "required": true,
+            "type": "string",
+            "description": ""
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "OK",
+            "schema": {
+              "$ref": "#/definitions/Droppaintings"
+            },
+            "examples": {
+              "application/json; charset=utf-8": {
+                "paintings": [
+                  {
+                    "mints": [
+                      "60f7a8b214b41631d860ce8a",
+                      "60f7a8b214b41631d860ce8c"
+                    ],
+                    "_id": "60f6c507e5c11d3fc1f5d25e",
+                    "dropDate": "2016-05-18T16:00:00Z",
+                    "genre": "Sci-fi",
+                    "image": "http://localhost:5000/imageLink",
+                    "file": "http://localhost:5000/fileLink",
+                    "title": "Simp's masterpiece",
+                    "theme": "red",
+                    "set": 15,
+                    "pieceNumber": 150,
+                    "pointVal": 200,
+                    "description": "It is a long established fact that a reader will be distracted by the readable content of a page when looking at its layout.",
+                    "format": "format",
+                    "size": "Large",
+                    "rarity": "Jewel",
+                    "fileType": "PNG",
+                    "fractionalOwnership": "false",
+                    "allowStaking": "true",
+                    "artistID": "60f69d63d75352405fe01e89",
+                    "collectionID": "60f6bba5c5d5ef33e8edfd40",
+                    "worldID": "60f695d436d46436a3e6971b",
+                    "__v": 0
+                  },
+                  {
+                    "mints": [
+                      "60f7a8b214b41631d860ce8a",
+                      "60f7a8b214b41631d860ce8c"
+                    ],
+                    "_id": "60f6c507e5c11d3fc1f5d25e",
+                    "dropDate": "2016-05-18T16:00:00Z",
+                    "genre": "Sci-fi",
+                    "image": "http://localhost:5000/imageLink",
+                    "file": "http://localhost:5000/fileLink",
+                    "title": "Simp's masterpiece",
+                    "theme": "red",
+                    "set": 15,
+                    "pieceNumber": 150,
+                    "pointVal": 200,
+                    "description": "It is a long established fact that a reader will be distracted by the readable content of a page when looking at its layout.",
+                    "format": "format",
+                    "size": "Large",
+                    "rarity": "Jewel",
+                    "fileType": "PNG",
+                    "fractionalOwnership": "false",
+                    "allowStaking": "true",
+                    "artistID": "60f69d63d75352405fe01e89",
+                    "collectionID": "60f6bba5c5d5ef33e8edfd40",
+                    "worldID": "60f695d436d46436a3e6971b",
+                    "__v": 0
+                  }
+                ],
+                "totalNumberOfPaintings": 2,
+                "numberOfPages": 1
+              }
+            },
+            "headers": {
+              "X-Powered-By": {
+                "type": "string",
+                "default": "Express"
+              },
+              "Access-Control-Allow-Origin": {
+                "type": "string",
+                "default": "*"
+              },
+              "Content-Length": {
+                "type": "string",
+                "default": "1472"
+              },
+              "ETag": {
+                "type": "string",
+                "default": "W/\"5c0-07elGJNGrevthivjS1PRPJVgKdM\""
+              },
+              "Date": {
+                "type": "string",
+                "default": "Wed, 21 Jul 2021 11:50:19 GMT"
+              },
+              "Connection": {
+                "type": "string",
+                "default": "keep-alive"
+              },
+              "Keep-Alive": {
+                "type": "string",
+                "default": "timeout=5"
+              }
+            }
+          }
+        }
+      }
+    },
+    "/world/filterPaintings": {
+      "get": {
+        "summary": "Paintings",
+        "tags": ["Marketplace"],
+        "operationId": "Paintings",
+        "deprecated": false,
+        "produces": ["application/json; charset=utf-8"],
+        "parameters": [
+          {
+            "name": "page",
+            "in": "query",
+            "required": true,
+            "type": "integer",
+            "format": "int32",
+            "description": ""
+          },
+          {
+            "name": "numberOfRows",
+            "in": "query",
+            "required": true,
+            "type": "integer",
+            "format": "int32",
+            "description": ""
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "OK",
+            "schema": {
+              "$ref": "#/definitions/Paintings"
+            },
+            "examples": {
+              "application/json; charset=utf-8": {
+                "paintings": [
+                  {
+                    "mints": [
+                      {
+                        "_id": "60f7a7fe14b41631d860ce84",
+                        "name": "mint",
+                        "sale": {
+                          "price": 50,
+                          "orderID": "",
+                          "captureID": "",
+                          "sold": false,
+                          "_id": "60f7a7fe14b41631d860ce85",
+                          "active": true
+                        }
+                      },
+                      {
+                        "_id": "60f7a7fe14b41631d860ce86",
+                        "name": "mint",
+                        "sale": {
+                          "price": 50,
+                          "orderID": "",
+                          "captureID": "",
+                          "sold": false,
+                          "_id": "60f7a7fe14b41631d860ce87",
+                          "active": true
+                        }
+                      }
+                    ],
+                    "_id": "60f6a88ca814f0711fbc87ef",
+                    "dropDate": "2016-05-18T16:00:00Z",
+                    "genre": "Sci-fi",
+                    "image": "http://localhost:5000/imageLink",
+                    "file": "http://localhost:5000/fileLink",
+                    "title": "Simp's masterpiece",
+                    "theme": "red",
+                    "set": 15,
+                    "pieceNumber": 150,
+                    "pointVal": 200,
+                    "description": "It is a long established fact that a reader will be distracted by the readable content of a page when looking at its layout.",
+                    "format": "format",
+                    "size": "Large",
+                    "rarity": "Jewel",
+                    "fileType": "PNG",
+                    "fractionalOwnership": "false",
+                    "allowStaking": "true",
+                    "artistID": "60f69d63d75352405fe01e89",
+                    "worldID": "60f695d436d46436a3e6971b",
+                    "__v": 0,
+                    "minPrice": 50
+                  },
+                  {
+                    "mints": [
+                      {
+                        "_id": "60f7a8b214b41631d860ce8a",
+                        "name": "mint1",
+                        "sale": {
+                          "price": 0,
+                          "orderID": "",
+                          "captureID": "",
+                          "sold": false,
+                          "_id": "60f7a8b214b41631d860ce8b",
+                          "active": false
+                        }
+                      },
+                      {
+                        "_id": "60f7a8b214b41631d860ce8c",
+                        "name": "mint2",
+                        "sale": {
+                          "price": 0,
+                          "orderID": "",
+                          "captureID": "",
+                          "sold": false,
+                          "_id": "60f7a8b214b41631d860ce8d",
+                          "active": false
+                        }
+                      }
+                    ],
+                    "_id": "60f6c507e5c11d3fc1f5d25e",
+                    "dropDate": "2016-05-18T16:00:00Z",
+                    "genre": "Sci-fi",
+                    "image": "http://localhost:5000/imageLink",
+                    "file": "http://localhost:5000/fileLink",
+                    "title": "Simp's masterpiece",
+                    "theme": "red",
+                    "set": 15,
+                    "pieceNumber": 150,
+                    "pointVal": 200,
+                    "description": "It is a long established fact that a reader will be distracted by the readable content of a page when looking at its layout.",
+                    "format": "format",
+                    "size": "Large",
+                    "rarity": "Jewel",
+                    "fileType": "PNG",
+                    "fractionalOwnership": "false",
+                    "allowStaking": "true",
+                    "artistID": "60f69d63d75352405fe01e89",
+                    "collectionID": "60f6bba5c5d5ef33e8edfd40",
+                    "worldID": "60f695d436d46436a3e6971b",
+                    "__v": 0,
+                    "minPrice": 0
+                  }
+                ],
+                "numberOfPages": 1,
+                "totalNumberOfPaintings": 2
+              }
+            },
+            "headers": {
+              "X-Powered-By": {
+                "type": "string",
+                "default": "Express"
+              },
+              "Access-Control-Allow-Origin": {
+                "type": "string",
+                "default": "*"
+              },
+              "Content-Length": {
+                "type": "string",
+                "default": "1979"
+              },
+              "ETag": {
+                "type": "string",
+                "default": "W/\"7bb-Tt968URK8Xu8gVQ6/0SLRtd00Xc\""
+              },
+              "Date": {
+                "type": "string",
+                "default": "Wed, 21 Jul 2021 10:11:02 GMT"
+              },
+              "Connection": {
+                "type": "string",
+                "default": "keep-alive"
+              },
+              "Keep-Alive": {
+                "type": "string",
+                "default": "timeout=5"
+              }
+            }
+          }
+        }
+      }
+    }
+  },
+  "definitions": {
+    "ArtistRequest": {
+      "title": "ArtistRequest",
+      "example": {
+        "name": "Simpson",
+        "tagline": "is Great",
+        "banner": "bannerLink",
+        "profileImage": "profileLink",
+        "bio": "It is a long established fact that a reader will be distracted by the readable content of a page when looking at its layout.",
+        "tags": "Fantasy, Horror, Sci-fi",
+        "worldID": "60f695ff36d46436a3e6971c"
+      },
+      "type": "object",
+      "properties": {
+        "name": {
+          "type": "string"
+        },
+        "tagline": {
+          "type": "string"
+        },
+        "banner": {
+          "type": "string"
+        },
+        "profileImage": {
+          "type": "string"
+        },
+        "bio": {
+          "type": "string"
+        },
+        "tags": {
+          "type": "string"
+        },
+        "worldID": {
+          "type": "string"
+        }
+      },
+      "required": [
+        "name",
+        "tagline",
+        "banner",
+        "profileImage",
+        "bio",
+        "tags",
+        "worldID"
+      ]
+    },
+    "Artist": {
+      "title": "Artist",
+      "example": {
+        "message": "Artist added successfully"
+      },
+      "type": "object",
+      "properties": {
+        "message": {
+          "type": "string"
+        }
+      },
+      "required": ["message"]
+    },
+    "GetArtists": {
+      "title": "GetArtists",
+      "example": {
+        "artists": [
+          {
+            "paintings": [],
+            "collections": [],
+            "_id": "60f69d63d75352405fe01e89",
+            "name": "Simpson",
+            "tagline": "is Great",
+            "banner": "bannerLink",
+            "profileImage": "profileLink",
+            "bio": "It is a long established fact that a reader will be distracted by the readable content of a page when looking at its layout.",
+            "tags": "Fantasy, Horror, Sci-fi",
+            "worldID": "60f695d436d46436a3e6971b",
+            "createdAt": "2021-07-20T09:54:43.627Z",
+            "updatedAt": "2021-07-20T09:54:43.627Z",
+            "__v": 0
+          },
+          {
+            "paintings": [],
+            "collections": [],
+            "_id": "60f69d75d75352405fe01e8a",
+            "name": "Simpson",
+            "tagline": "is Great",
+            "banner": "bannerLink",
+            "profileImage": "profileLink",
+            "bio": "It is a long established fact that a reader will be distracted by the readable content of a page when looking at its layout.",
+            "tags": "Fantasy, Horror, Sci-fi",
+            "worldID": "60f695ff36d46436a3e6971c",
+            "createdAt": "2021-07-20T09:55:01.815Z",
+            "updatedAt": "2021-07-20T09:55:01.815Z",
+            "__v": 0
+          }
+        ],
+        "Total": 2,
+        "NumberOfPages": 1
+      },
+      "type": "object",
+      "properties": {
+        "artists": {
+          "type": "array",
+          "items": {
+            "$ref": "#/definitions/Artist1"
+          }
+        },
+        "Total": {
+          "type": "integer",
+          "format": "int32"
+        },
+        "NumberOfPages": {
+          "type": "integer",
+          "format": "int32"
+        }
+      },
+      "required": ["artists", "Total", "NumberOfPages"]
+    },
+    "Artist1": {
+      "title": "Artist1",
+      "example": {
+        "paintings": [],
+        "collections": [],
+        "_id": "60f69d63d75352405fe01e89",
+        "name": "Simpson",
+        "tagline": "is Great",
+        "banner": "bannerLink",
+        "profileImage": "profileLink",
+        "bio": "It is a long established fact that a reader will be distracted by the readable content of a page when looking at its layout.",
+        "tags": "Fantasy, Horror, Sci-fi",
+        "worldID": "60f695d436d46436a3e6971b",
+        "createdAt": "2021-07-20T09:54:43.627Z",
+        "updatedAt": "2021-07-20T09:54:43.627Z",
+        "__v": 0
+      },
+      "type": "object",
+      "properties": {
+        "paintings": {
+          "type": "array",
+          "items": {
+            "type": "string"
+          }
+        },
+        "collections": {
+          "type": "array",
+          "items": {
+            "type": "string"
+          }
+        },
+        "_id": {
+          "type": "string"
+        },
+        "name": {
+          "type": "string"
+        },
+        "tagline": {
+          "type": "string"
+        },
+        "banner": {
+          "type": "string"
+        },
+        "profileImage": {
+          "type": "string"
+        },
+        "bio": {
+          "type": "string"
+        },
+        "tags": {
+          "type": "string"
+        },
+        "worldID": {
+          "type": "string"
+        },
+        "createdAt": {
+          "type": "string"
+        },
+        "updatedAt": {
+          "type": "string"
+        },
+        "__v": {
+          "type": "integer",
+          "format": "int32"
+        }
+      },
+      "required": [
+        "paintings",
+        "collections",
+        "_id",
+        "name",
+        "tagline",
+        "banner",
+        "profileImage",
+        "bio",
+        "tags",
+        "worldID",
+        "createdAt",
+        "updatedAt",
+        "__v"
+      ]
+    },
+    "Artistdetail": {
+      "title": "Artistdetail",
+      "example": {
+        "paintings": [],
+        "collections": [],
+        "_id": "60f69d63d75352405fe01e89",
+        "name": "Simpson",
+        "tagline": "is Great",
+        "banner": "bannerLink",
+        "profileImage": "profileLink",
+        "bio": "It is a long established fact that a reader will be distracted by the readable content of a page when looking at its layout.",
+        "tags": "Fantasy, Horror, Sci-fi",
+        "worldID": "60f695d436d46436a3e6971b",
+        "createdAt": "2021-07-20T09:54:43.627Z",
+        "updatedAt": "2021-07-20T09:54:43.627Z",
+        "__v": 0
+      },
+      "type": "object",
+      "properties": {
+        "paintings": {
+          "type": "array",
+          "items": {
+            "type": "string"
+          }
+        },
+        "collections": {
+          "type": "array",
+          "items": {
+            "type": "string"
+          }
+        },
+        "_id": {
+          "type": "string"
+        },
+        "name": {
+          "type": "string"
+        },
+        "tagline": {
+          "type": "string"
+        },
+        "banner": {
+          "type": "string"
+        },
+        "profileImage": {
+          "type": "string"
+        },
+        "bio": {
+          "type": "string"
+        },
+        "tags": {
+          "type": "string"
+        },
+        "worldID": {
+          "type": "string"
+        },
+        "createdAt": {
+          "type": "string"
+        },
+        "updatedAt": {
+          "type": "string"
+        },
+        "__v": {
+          "type": "integer",
+          "format": "int32"
+        }
+      },
+      "required": [
+        "paintings",
+        "collections",
+        "_id",
+        "name",
+        "tagline",
+        "banner",
+        "profileImage",
+        "bio",
+        "tags",
+        "worldID",
+        "createdAt",
+        "updatedAt",
+        "__v"
+      ]
+    },
+    "Searchquery": {
+      "title": "Searchquery",
+      "example": {
+        "artists": [
+          {
+            "paintings": [],
+            "collections": [],
+            "_id": "60f69d75d75352405fe01e8a",
+            "name": "Simpson",
+            "tagline": "is Great",
+            "banner": "bannerLink",
+            "profileImage": "profileLink",
+            "bio": "It is a long established fact that a reader will be distracted by the readable content of a page when looking at its layout.",
+            "tags": "Fantasy, Horror, Sci-fi",
+            "worldID": "60f695ff36d46436a3e6971c",
+            "createdAt": "2021-07-20T09:55:01.815Z",
+            "updatedAt": "2021-07-20T09:55:01.815Z",
+            "__v": 0
+          },
+          {
+            "paintings": [],
+            "collections": [],
+            "_id": "60f69d63d75352405fe01e89",
+            "name": "Simpson",
+            "tagline": "is Great",
+            "banner": "bannerLink",
+            "profileImage": "profileLink",
+            "bio": "It is a long established fact that a reader will be distracted by the readable content of a page when looking at its layout.",
+            "tags": "Fantasy, Horror, Sci-fi",
+            "worldID": "60f695d436d46436a3e6971b",
+            "createdAt": "2021-07-20T09:54:43.627Z",
+            "updatedAt": "2021-07-20T09:54:43.627Z",
+            "__v": 0
+          }
+        ],
+        "Total": 2,
+        "NumberOfPages": 1
+      },
+      "type": "object",
+      "properties": {
+        "artists": {
+          "type": "array",
+          "items": {
+            "$ref": "#/definitions/Artist1"
+          }
+        },
+        "Total": {
+          "type": "integer",
+          "format": "int32"
+        },
+        "NumberOfPages": {
+          "type": "integer",
+          "format": "int32"
+        }
+      },
+      "required": ["artists", "Total", "NumberOfPages"]
+    },
+    "UpdateArtistRequest": {
+      "title": "UpdateArtistRequest",
+      "example": {
+        "name": "Postman"
+      },
+      "type": "object",
+      "properties": {
+        "name": {
+          "type": "string"
+        }
+      },
+      "required": ["name"]
+    },
+    "UpdateArtist": {
+      "title": "UpdateArtist",
+      "example": {
+        "message": "Artist updated"
+      },
+      "type": "object",
+      "properties": {
+        "message": {
+          "type": "string"
+        }
+      },
+      "required": ["message"]
+    },
+    "PaintingtoartistRequest": {
+      "title": "PaintingtoartistRequest",
+      "example": {
+        "dropDate": "2016-05-18T16:00:00Z",
+        "genre": "Sci-fi",
+        "image": "http://localhost:5000/imageLink",
+        "file": "http://localhost:5000/fileLink",
+        "title": "Simp's masterpiece",
+        "theme": "red",
+        "set": 15,
+        "pieceNumber": 150,
+        "pointVal": 200,
+        "description": "It is a long established fact that a reader will be distracted by the readable content of a page when looking at its layout.",
+        "format": "format",
+        "size": "Large",
+        "rarity": "Jewel",
+        "fileType": "PNG",
+        "fractionalOwnership": false,
+        "allowStaking": true
+      },
+      "type": "object",
+      "properties": {
+        "dropDate": {
+          "type": "string"
+        },
+        "genre": {
+          "type": "string"
+        },
+        "image": {
+          "type": "string"
+        },
+        "file": {
+          "type": "string"
+        },
+        "title": {
+          "type": "string"
+        },
+        "theme": {
+          "type": "string"
+        },
+        "set": {
+          "type": "integer",
+          "format": "int32"
+        },
+        "pieceNumber": {
+          "type": "integer",
+          "format": "int32"
+        },
+        "pointVal": {
+          "type": "integer",
+          "format": "int32"
+        },
+        "description": {
+          "type": "string"
+        },
+        "format": {
+          "type": "string"
+        },
+        "size": {
+          "type": "string"
+        },
+        "rarity": {
+          "type": "string"
+        },
+        "fileType": {
+          "type": "string"
+        },
+        "fractionalOwnership": {
+          "type": "boolean"
+        },
+        "allowStaking": {
+          "type": "boolean"
+        }
+      },
+      "required": [
+        "dropDate",
+        "genre",
+        "image",
+        "file",
+        "title",
+        "theme",
+        "set",
+        "pieceNumber",
+        "pointVal",
+        "description",
+        "format",
+        "size",
+        "rarity",
+        "fileType",
+        "fractionalOwnership",
+        "allowStaking"
+      ]
+    },
+    "Putpaintingtoartist": {
+      "title": "Putpaintingtoartist",
+      "example": {
+        "mints": [],
+        "_id": "60f6a88ca814f0711fbc87ef",
+        "dropDate": "2016-05-18T16:00:00Z",
+        "genre": "Sci-fi",
+        "image": "http://localhost:5000/imageLink",
+        "file": "http://localhost:5000/fileLink",
+        "title": "Simp's masterpiece",
+        "theme": "red",
+        "set": 15,
+        "pieceNumber": 150,
+        "pointVal": 200,
+        "description": "It is a long established fact that a reader will be distracted by the readable content of a page when looking at its layout.",
+        "format": "format",
+        "size": "Large",
+        "rarity": "Jewel",
+        "fileType": "PNG",
+        "fractionalOwnership": "false",
+        "allowStaking": "true",
+        "artistID": "60f69d63d75352405fe01e89",
+        "worldID": "60f695d436d46436a3e6971b",
+        "__v": 0
+      },
+      "type": "object",
+      "properties": {
+        "mints": {
+          "type": "array",
+          "items": {
+            "type": "string"
+          }
+        },
+        "_id": {
+          "type": "string"
+        },
+        "dropDate": {
+          "type": "string"
+        },
+        "genre": {
+          "type": "string"
+        },
+        "image": {
+          "type": "string"
+        },
+        "file": {
+          "type": "string"
+        },
+        "title": {
+          "type": "string"
+        },
+        "theme": {
+          "type": "string"
+        },
+        "set": {
+          "type": "integer",
+          "format": "int32"
+        },
+        "pieceNumber": {
+          "type": "integer",
+          "format": "int32"
+        },
+        "pointVal": {
+          "type": "integer",
+          "format": "int32"
+        },
+        "description": {
+          "type": "string"
+        },
+        "format": {
+          "type": "string"
+        },
+        "size": {
+          "type": "string"
+        },
+        "rarity": {
+          "type": "string"
+        },
+        "fileType": {
+          "type": "string"
+        },
+        "fractionalOwnership": {
+          "type": "string"
+        },
+        "allowStaking": {
+          "type": "string"
+        },
+        "artistID": {
+          "type": "string"
+        },
+        "worldID": {
+          "type": "string"
+        },
+        "__v": {
+          "type": "integer",
+          "format": "int32"
+        }
+      },
+      "required": [
+        "mints",
+        "_id",
+        "dropDate",
+        "genre",
+        "image",
+        "file",
+        "title",
+        "theme",
+        "set",
+        "pieceNumber",
+        "pointVal",
+        "description",
+        "format",
+        "size",
+        "rarity",
+        "fileType",
+        "fractionalOwnership",
+        "allowStaking",
+        "artistID",
+        "worldID",
+        "__v"
+      ]
+    },
+    "GetArtistPainting/": {
+      "title": "GetArtistPainting/",
+      "example": {
+        "_id": "60c98fcc8b6415714bbabaaa",
+        "paintings": [
+          {
+            "_id": "60c9a55d3c2f6119f780f836",
+            "image": "imageLink",
+            "file": "fileLink",
+            "title": "Abhinav's masterpiece",
+            "year": 2000,
+            "theme": "red",
+            "set": 15,
+            "pieceNumber": 150,
+            "pointVal": 200,
+            "description": "description",
+            "format": "format",
+            "size": "2px",
+            "rarity": "highly exp",
+            "fileType": "PNG",
+            "fractionalOwnership": "false",
+            "allowStaking": "true",
+            "artistID": "60c98fcc8b6415714bbabaaa",
+            "mints": []
+          }
+        ]
+      },
+      "type": "object",
+      "properties": {
+        "_id": {
+          "type": "string"
+        },
+        "paintings": {
+          "type": "array",
+          "items": {
+            "$ref": "#/definitions/Painting"
+          }
+        }
+      },
+      "required": ["_id", "paintings"]
+    },
+    "Painting": {
+      "title": "Painting",
+      "example": {
+        "_id": "60c9a55d3c2f6119f780f836",
+        "image": "imageLink",
+        "file": "fileLink",
+        "title": "Abhinav's masterpiece",
+        "year": 2000,
+        "theme": "red",
+        "set": 15,
+        "pieceNumber": 150,
+        "pointVal": 200,
+        "description": "description",
+        "format": "format",
+        "size": "2px",
+        "rarity": "highly exp",
+        "fileType": "PNG",
+        "fractionalOwnership": "false",
+        "allowStaking": "true",
+        "artistID": "60c98fcc8b6415714bbabaaa",
+        "mints": []
+      },
+      "type": "object",
+      "properties": {
+        "_id": {
+          "type": "string"
+        },
+        "image": {
+          "type": "string"
+        },
+        "file": {
+          "type": "string"
+        },
+        "title": {
+          "type": "string"
+        },
+        "year": {
+          "type": "integer",
+          "format": "int32"
+        },
+        "theme": {
+          "type": "string"
+        },
+        "set": {
+          "type": "integer",
+          "format": "int32"
+        },
+        "pieceNumber": {
+          "type": "integer",
+          "format": "int32"
+        },
+        "pointVal": {
+          "type": "integer",
+          "format": "int32"
+        },
+        "description": {
+          "type": "string"
+        },
+        "format": {
+          "type": "string"
+        },
+        "size": {
+          "type": "string"
+        },
+        "rarity": {
+          "type": "string"
+        },
+        "fileType": {
+          "type": "string"
+        },
+        "fractionalOwnership": {
+          "type": "string"
+        },
+        "allowStaking": {
+          "type": "string"
+        },
+        "artistID": {
+          "type": "string"
+        },
+        "mints": {
+          "type": "array",
+          "items": {
+            "type": "string"
+          }
+        }
+      },
+      "required": [
+        "_id",
+        "image",
+        "file",
+        "title",
+        "year",
+        "theme",
+        "set",
+        "pieceNumber",
+        "pointVal",
+        "description",
+        "format",
+        "size",
+        "rarity",
+        "fileType",
+        "fractionalOwnership",
+        "allowStaking",
+        "artistID",
+        "mints"
+      ]
+    },
+    "GetArtistPainting/1": {
+      "title": "GetArtistPainting/1",
+      "example": {
+        "paintings": ["60cabba76e86bb1c646d6020"],
+        "_id": "60c9c52fa8d37a6a003637fd"
+      },
+      "type": "object",
+      "properties": {
+        "paintings": {
+          "type": "array",
+          "items": {
+            "type": "string"
+          }
+        },
+        "_id": {
+          "type": "string"
+        }
+      },
+      "required": ["paintings", "_id"]
+    },
+    "AddpaintingtocollectionRequest": {
+      "title": "AddpaintingtocollectionRequest",
+      "example": {
+        "dropDate": "2016-05-18T16:00:00Z",
+        "genre": "Sci-fi",
+        "image": "http://localhost:5000/imageLink",
+        "file": "http://localhost:5000/fileLink",
+        "title": "Simp's masterpiece",
+        "theme": "red",
+        "set": 15,
+        "pieceNumber": 150,
+        "pointVal": 200,
+        "description": "It is a long established fact that a reader will be distracted by the readable content of a page when looking at its layout.",
+        "format": "format",
+        "size": "Large",
+        "rarity": "Jewel",
+        "fileType": "PNG",
+        "fractionalOwnership": false,
+        "allowStaking": true
+      },
+      "type": "object",
+      "properties": {
+        "dropDate": {
+          "type": "string"
+        },
+        "genre": {
+          "type": "string"
+        },
+        "image": {
+          "type": "string"
+        },
+        "file": {
+          "type": "string"
+        },
+        "title": {
+          "type": "string"
+        },
+        "theme": {
+          "type": "string"
+        },
+        "set": {
+          "type": "integer",
+          "format": "int32"
+        },
+        "pieceNumber": {
+          "type": "integer",
+          "format": "int32"
+        },
+        "pointVal": {
+          "type": "integer",
+          "format": "int32"
+        },
+        "description": {
+          "type": "string"
+        },
+        "format": {
+          "type": "string"
+        },
+        "size": {
+          "type": "string"
+        },
+        "rarity": {
+          "type": "string"
+        },
+        "fileType": {
+          "type": "string"
+        },
+        "fractionalOwnership": {
+          "type": "boolean"
+        },
+        "allowStaking": {
+          "type": "boolean"
+        }
+      },
+      "required": [
+        "dropDate",
+        "genre",
+        "image",
+        "file",
+        "title",
+        "theme",
+        "set",
+        "pieceNumber",
+        "pointVal",
+        "description",
+        "format",
+        "size",
+        "rarity",
+        "fileType",
+        "fractionalOwnership",
+        "allowStaking"
+      ]
+    },
+    "Addpaintingtocollection": {
+      "title": "Addpaintingtocollection",
+      "example": {
+        "mints": [],
+        "_id": "60f6c507e5c11d3fc1f5d25e",
+        "dropDate": "2016-05-18T16:00:00Z",
+        "genre": "Sci-fi",
+        "image": "http://localhost:5000/imageLink",
+        "file": "http://localhost:5000/fileLink",
+        "title": "Simp's masterpiece",
+        "theme": "red",
+        "set": 15,
+        "pieceNumber": 150,
+        "pointVal": 200,
+        "description": "It is a long established fact that a reader will be distracted by the readable content of a page when looking at its layout.",
+        "format": "format",
+        "size": "Large",
+        "rarity": "Jewel",
+        "fileType": "PNG",
+        "fractionalOwnership": "false",
+        "allowStaking": "true",
+        "artistID": "60f69d63d75352405fe01e89",
+        "collectionID": "60f6bba5c5d5ef33e8edfd40",
+        "worldID": "60f695d436d46436a3e6971b",
+        "__v": 0
+      },
+      "type": "object",
+      "properties": {
+        "mints": {
+          "type": "array",
+          "items": {
+            "type": "string"
+          }
+        },
+        "_id": {
+          "type": "string"
+        },
+        "dropDate": {
+          "type": "string"
+        },
+        "genre": {
+          "type": "string"
+        },
+        "image": {
+          "type": "string"
+        },
+        "file": {
+          "type": "string"
+        },
+        "title": {
+          "type": "string"
+        },
+        "theme": {
+          "type": "string"
+        },
+        "set": {
+          "type": "integer",
+          "format": "int32"
+        },
+        "pieceNumber": {
+          "type": "integer",
+          "format": "int32"
+        },
+        "pointVal": {
+          "type": "integer",
+          "format": "int32"
+        },
+        "description": {
+          "type": "string"
+        },
+        "format": {
+          "type": "string"
+        },
+        "size": {
+          "type": "string"
+        },
+        "rarity": {
+          "type": "string"
+        },
+        "fileType": {
+          "type": "string"
+        },
+        "fractionalOwnership": {
+          "type": "string"
+        },
+        "allowStaking": {
+          "type": "string"
+        },
+        "artistID": {
+          "type": "string"
+        },
+        "collectionID": {
+          "type": "string"
+        },
+        "worldID": {
+          "type": "string"
+        },
+        "__v": {
+          "type": "integer",
+          "format": "int32"
+        }
+      },
+      "required": [
+        "mints",
+        "_id",
+        "dropDate",
+        "genre",
+        "image",
+        "file",
+        "title",
+        "theme",
+        "set",
+        "pieceNumber",
+        "pointVal",
+        "description",
+        "format",
+        "size",
+        "rarity",
+        "fileType",
+        "fractionalOwnership",
+        "allowStaking",
+        "artistID",
+        "collectionID",
+        "worldID",
+        "__v"
+      ]
+    },
+    "PaintingfromcollectionRequest": {
+      "title": "PaintingfromcollectionRequest",
+      "example": {
+        "paintingIds": ["60f6ca06685ee654d1d0c9d6"]
+      },
+      "type": "object",
+      "properties": {
+        "paintingIds": {
+          "type": "array",
+          "items": {
+            "type": "string"
+          }
+        }
+      },
+      "required": ["paintingIds"]
+    },
+    "Deletepaintingfromcollection": {
+      "title": "Deletepaintingfromcollection",
+      "example": {
+        "n": 1,
+        "nModified": 1,
+        "ok": 1
+      },
+      "type": "object",
+      "properties": {
+        "n": {
+          "type": "integer",
+          "format": "int32"
+        },
+        "nModified": {
+          "type": "integer",
+          "format": "int32"
+        },
+        "ok": {
+          "type": "integer",
+          "format": "int32"
+        }
+      },
+      "required": ["n", "nModified", "ok"]
+    },
+    "GetCollectionPaintings": {
+      "title": "GetCollectionPaintings",
+      "example": {
+        "paintings": [
+          {
+            "mints": [],
+            "_id": "60f6c507e5c11d3fc1f5d25e",
+            "dropDate": "2016-05-18T16:00:00Z",
+            "genre": "Sci-fi",
+            "image": "http://localhost:5000/imageLink",
+            "file": "http://localhost:5000/fileLink",
+            "title": "Simp's masterpiece",
+            "theme": "red",
+            "set": 15,
+            "pieceNumber": 150,
+            "pointVal": 200,
+            "description": "It is a long established fact that a reader will be distracted by the readable content of a page when looking at its layout.",
+            "format": "format",
+            "size": "Large",
+            "rarity": "Jewel",
+            "fileType": "PNG",
+            "fractionalOwnership": "false",
+            "allowStaking": "true",
+            "artistID": "60f69d63d75352405fe01e89",
+            "collectionID": "60f6bba5c5d5ef33e8edfd40",
+            "worldID": "60f695d436d46436a3e6971b",
+            "__v": 0
+          }
+        ],
+        "Total": 1,
+        "NumberOfPages": 1
+      },
+      "type": "object",
+      "properties": {
+        "paintings": {
+          "type": "array",
+          "items": {
+            "$ref": "#/definitions/Painting1"
+          }
+        },
+        "Total": {
+          "type": "integer",
+          "format": "int32"
+        },
+        "NumberOfPages": {
+          "type": "integer",
+          "format": "int32"
+        }
+      },
+      "required": ["paintings", "Total", "NumberOfPages"]
+    },
+    "Painting1": {
+      "title": "Painting1",
+      "example": {
+        "mints": [],
+        "_id": "60f6c507e5c11d3fc1f5d25e",
+        "dropDate": "2016-05-18T16:00:00Z",
+        "genre": "Sci-fi",
+        "image": "http://localhost:5000/imageLink",
+        "file": "http://localhost:5000/fileLink",
+        "title": "Simp's masterpiece",
+        "theme": "red",
+        "set": 15,
+        "pieceNumber": 150,
+        "pointVal": 200,
+        "description": "It is a long established fact that a reader will be distracted by the readable content of a page when looking at its layout.",
+        "format": "format",
+        "size": "Large",
+        "rarity": "Jewel",
+        "fileType": "PNG",
+        "fractionalOwnership": "false",
+        "allowStaking": "true",
+        "artistID": "60f69d63d75352405fe01e89",
+        "collectionID": "60f6bba5c5d5ef33e8edfd40",
+        "worldID": "60f695d436d46436a3e6971b",
+        "__v": 0
+      },
+      "type": "object",
+      "properties": {
+        "mints": {
+          "type": "array",
+          "items": {
+            "type": "string"
+          }
+        },
+        "_id": {
+          "type": "string"
+        },
+        "dropDate": {
+          "type": "string"
+        },
+        "genre": {
+          "type": "string"
+        },
+        "image": {
+          "type": "string"
+        },
+        "file": {
+          "type": "string"
+        },
+        "title": {
+          "type": "string"
+        },
+        "theme": {
+          "type": "string"
+        },
+        "set": {
+          "type": "integer",
+          "format": "int32"
+        },
+        "pieceNumber": {
+          "type": "integer",
+          "format": "int32"
+        },
+        "pointVal": {
+          "type": "integer",
+          "format": "int32"
+        },
+        "description": {
+          "type": "string"
+        },
+        "format": {
+          "type": "string"
+        },
+        "size": {
+          "type": "string"
+        },
+        "rarity": {
+          "type": "string"
+        },
+        "fileType": {
+          "type": "string"
+        },
+        "fractionalOwnership": {
+          "type": "string"
+        },
+        "allowStaking": {
+          "type": "string"
+        },
+        "artistID": {
+          "type": "string"
+        },
+        "collectionID": {
+          "type": "string"
+        },
+        "worldID": {
+          "type": "string"
+        },
+        "__v": {
+          "type": "integer",
+          "format": "int32"
+        }
+      },
+      "required": [
+        "mints",
+        "_id",
+        "dropDate",
+        "genre",
+        "image",
+        "file",
+        "title",
+        "theme",
+        "set",
+        "pieceNumber",
+        "pointVal",
+        "description",
+        "format",
+        "size",
+        "rarity",
+        "fileType",
+        "fractionalOwnership",
+        "allowStaking",
+        "artistID",
+        "collectionID",
+        "worldID",
+        "__v"
+      ]
+    },
+    "paintingfromArtistRequest": {
+      "title": "paintingfromArtistRequest",
+      "example": {
+        "paintingIds": ["60f6a8d4a814f0711fbc87f0"]
+      },
+      "type": "object",
+      "properties": {
+        "paintingIds": {
+          "type": "array",
+          "items": {
+            "type": "string"
+          }
+        }
+      },
+      "required": ["paintingIds"]
+    },
+    "Deletepaintings": {
+      "title": "Deletepaintings",
+      "example": {
+        "n": 1,
+        "nModified": 1,
+        "ok": 1
+      },
+      "type": "object",
+      "properties": {
+        "n": {
+          "type": "integer",
+          "format": "int32"
+        },
+        "nModified": {
+          "type": "integer",
+          "format": "int32"
+        },
+        "ok": {
+          "type": "integer",
+          "format": "int32"
+        }
+      },
+      "required": ["n", "nModified", "ok"]
+    },
+    "AddCollectionsRequest": {
+      "title": "AddCollectionsRequest",
+      "example": {
+        "name": "Cool Collection",
+        "logo": "http://localhost:5000/coolimage"
+      },
+      "type": "object",
+      "properties": {
+        "name": {
+          "type": "string"
+        },
+        "logo": {
+          "type": "string"
+        }
+      },
+      "required": ["name", "logo"]
+    },
+    "AddCollections": {
+      "title": "AddCollections",
+      "example": {
+        "paintings": [],
+        "_id": "60f6bbdbc5d5ef33e8edfd41",
+        "name": "Cool Collection",
+        "logo": "http://localhost:5000/coolimage",
+        "artistID": "60f69d75d75352405fe01e8a",
+        "worldID": "60f695ff36d46436a3e6971c",
+        "__v": 0
+      },
+      "type": "object",
+      "properties": {
+        "paintings": {
+          "type": "array",
+          "items": {
+            "type": "string"
+          }
+        },
+        "_id": {
+          "type": "string"
+        },
+        "name": {
+          "type": "string"
+        },
+        "logo": {
+          "type": "string"
+        },
+        "artistID": {
+          "type": "string"
+        },
+        "worldID": {
+          "type": "string"
+        },
+        "__v": {
+          "type": "integer",
+          "format": "int32"
+        }
+      },
+      "required": [
+        "paintings",
+        "_id",
+        "name",
+        "logo",
+        "artistID",
+        "worldID",
+        "__v"
+      ]
+    },
+    "Getcollection": {
+      "title": "Getcollection",
+      "example": {
+        "paintings": [],
+        "_id": "60cabd399a85971e3766855f",
+        "name": "New dasdfew",
+        "logo": "Collection Logo Link",
+        "artistID": "60c9c52fa8d37a6a003637fd",
+        "__v": 0
+      },
+      "type": "object",
+      "properties": {
+        "paintings": {
+          "type": "array",
+          "items": {
+            "type": "string"
+          }
+        },
+        "_id": {
+          "type": "string"
+        },
+        "name": {
+          "type": "string"
+        },
+        "logo": {
+          "type": "string"
+        },
+        "artistID": {
+          "type": "string"
+        },
+        "__v": {
+          "type": "integer",
+          "format": "int32"
+        }
+      },
+      "required": ["paintings", "_id", "name", "logo", "artistID", "__v"]
+    },
+    "Getallcollections": {
+      "title": "Getallcollections",
+      "example": {
+        "collections": [
+          {
+            "paintings": [],
+            "_id": "60f6bba5c5d5ef33e8edfd40",
+            "name": "Updated Name",
+            "logo": "http://localhost:9000/update",
+            "artistID": "60f69d63d75352405fe01e89",
+            "worldID": "60f695d436d46436a3e6971b",
+            "__v": 0
+          }
+        ],
+        "Total": 1,
+        "NumberOfPages": 1
+      },
+      "type": "object",
+      "properties": {
+        "collections": {
+          "type": "array",
+          "items": {
+            "$ref": "#/definitions/Collection"
+          }
+        },
+        "Total": {
+          "type": "integer",
+          "format": "int32"
+        },
+        "NumberOfPages": {
+          "type": "integer",
+          "format": "int32"
+        }
+      },
+      "required": ["collections", "Total", "NumberOfPages"]
+    },
+    "Collection": {
+      "title": "Collection",
+      "example": {
+        "paintings": [],
+        "_id": "60f6bba5c5d5ef33e8edfd40",
+        "name": "Updated Name",
+        "logo": "http://localhost:9000/update",
+        "artistID": "60f69d63d75352405fe01e89",
+        "worldID": "60f695d436d46436a3e6971b",
+        "__v": 0
+      },
+      "type": "object",
+      "properties": {
+        "paintings": {
+          "type": "array",
+          "items": {
+            "type": "string"
+          }
+        },
+        "_id": {
+          "type": "string"
+        },
+        "name": {
+          "type": "string"
+        },
+        "logo": {
+          "type": "string"
+        },
+        "artistID": {
+          "type": "string"
+        },
+        "worldID": {
+          "type": "string"
+        },
+        "__v": {
+          "type": "integer",
+          "format": "int32"
+        }
+      },
+      "required": [
+        "paintings",
+        "_id",
+        "name",
+        "logo",
+        "artistID",
+        "worldID",
+        "__v"
+      ]
+    },
+    "RemoveCollectionsRequest": {
+      "title": "RemoveCollectionsRequest",
+      "example": {
+        "collectionIds": ["60f6bbdbc5d5ef33e8edfd41"]
+      },
+      "type": "object",
+      "properties": {
+        "collectionIds": {
+          "type": "array",
+          "items": {
+            "type": "string"
+          }
+        }
+      },
+      "required": ["collectionIds"]
+    },
+    "RemoveCollections": {
+      "title": "RemoveCollections",
+      "example": {
+        "n": 1,
+        "nModified": 1,
+        "ok": 1
+      },
+      "type": "object",
+      "properties": {
+        "n": {
+          "type": "integer",
+          "format": "int32"
+        },
+        "nModified": {
+          "type": "integer",
+          "format": "int32"
+        },
+        "ok": {
+          "type": "integer",
+          "format": "int32"
+        }
+      },
+      "required": ["n", "nModified", "ok"]
+    },
+    "CollectionRequest": {
+      "title": "CollectionRequest",
+      "example": {
+        "name": "Updated Name",
+        "logo": "http://localhost:9000/update"
+      },
+      "type": "object",
+      "properties": {
+        "name": {
+          "type": "string"
+        },
+        "logo": {
+          "type": "string"
+        }
+      },
+      "required": ["name", "logo"]
+    },
+    "Collection1": {
+      "title": "Collection1",
+      "example": {
+        "message": "Collection updated"
+      },
+      "type": "object",
+      "properties": {
+        "message": {
+          "type": "string"
+        }
+      },
+      "required": ["message"]
+    },
+    "AddmintstoPaintingRequest": {
+      "title": "AddmintstoPaintingRequest",
+      "example": {
+        "name": "mint1",
+        "tokenId": "token#1",
+        "timestamp": "1623912277106",
+        "sale": {
+          "active": false,
+          "price": "0"
+        }
+      },
+      "type": "object",
+      "properties": {
+        "name": {
+          "type": "string"
+        },
+        "tokenId": {
+          "type": "string"
+        },
+        "timestamp": {
+          "type": "string"
+        },
+        "sale": {
+          "$ref": "#/definitions/Sale"
+        }
+      },
+      "required": ["name", "tokenId", "timestamp", "sale"]
+    },
+    "Sale": {
+      "title": "Sale",
+      "example": {
+        "active": false,
+        "price": "0"
+      },
+      "type": "object",
+      "properties": {
+        "active": {
+          "type": "boolean"
+        },
+        "price": {
+          "type": "string"
+        }
+      },
+      "required": ["active", "price"]
+    },
+    "AddmintstoPainting": {
+      "title": "AddmintstoPainting",
+      "example": {
+        "n": 1,
+        "nModified": 1,
+        "ok": 1
+      },
+      "type": "object",
+      "properties": {
+        "n": {
+          "type": "integer",
+          "format": "int32"
+        },
+        "nModified": {
+          "type": "integer",
+          "format": "int32"
+        },
+        "ok": {
+          "type": "integer",
+          "format": "int32"
+        }
+      },
+      "required": ["n", "nModified", "ok"]
+    },
+    "AddmintstoCollectionPaintingRequest": {
+      "title": "AddmintstoCollectionPaintingRequest",
+      "example": {
+        "name": "mint1",
+        "tokenId": "token#1",
+        "timestamp": "1623912277106",
+        "sale": {
+          "active": false,
+          "price": "0"
+        }
+      },
+      "type": "object",
+      "properties": {
+        "name": {
+          "type": "string"
+        },
+        "tokenId": {
+          "type": "string"
+        },
+        "timestamp": {
+          "type": "string"
+        },
+        "sale": {
+          "$ref": "#/definitions/Sale"
+        }
+      },
+      "required": ["name", "tokenId", "timestamp", "sale"]
+    },
+    "AddmintstoCollectionPainting": {
+      "title": "AddmintstoCollectionPainting",
+      "example": {
+        "n": 1,
+        "nModified": 1,
+        "ok": 1
+      },
+      "type": "object",
+      "properties": {
+        "n": {
+          "type": "integer",
+          "format": "int32"
+        },
+        "nModified": {
+          "type": "integer",
+          "format": "int32"
+        },
+        "ok": {
+          "type": "integer",
+          "format": "int32"
+        }
+      },
+      "required": ["n", "nModified", "ok"]
+    },
+    "MintRequest": {
+      "title": "MintRequest",
+      "example": {
+        "mintID": "60f7a7fe14b41631d860ce84",
+        "price": 500,
+        "active": true
+      },
+      "type": "object",
+      "properties": {
+        "mintID": {
+          "type": "string"
+        },
+        "price": {
+          "type": "integer",
+          "format": "int32"
+        },
+        "active": {
+          "type": "boolean"
+        }
+      },
+      "required": ["mintID", "price", "active"]
+    },
+    "Mint": {
+      "title": "Mint",
+      "example": {
+        "message": "Mints updated"
+      },
+      "type": "object",
+      "properties": {
+        "message": {
+          "type": "string"
+        }
+      },
+      "required": ["message"]
+    },
+    "MintById": {
+      "title": "MintById",
+      "example": {
+        "currentBuyer": "",
+        "pastBuyers": [],
+        "_id": "60f7a7fe14b41631d860ce84",
+        "name": "mint",
+        "tokenId": "token#1",
+        "timestamp": "2021-06-17T06:44:37.106Z",
+        "sale": {
+          "price": 50,
+          "orderID": "",
+          "captureID": "",
+          "sold": false,
+          "_id": "60f7a7fe14b41631d860ce85",
+          "active": true
+        },
+        "paintingID": "60f6a88ca814f0711fbc87ef",
+        "__v": 0
+      },
+      "type": "object",
+      "properties": {
+        "currentBuyer": {
+          "type": "string"
+        },
+        "pastBuyers": {
+          "type": "array",
+          "items": {
+            "type": "string"
+          }
+        },
+        "_id": {
+          "type": "string"
+        },
+        "name": {
+          "type": "string"
+        },
+        "tokenId": {
+          "type": "string"
+        },
+        "timestamp": {
+          "type": "string"
+        },
+        "sale": {
+          "$ref": "#/definitions/Sale2"
+        },
+        "paintingID": {
+          "type": "string"
+        },
+        "__v": {
+          "type": "integer",
+          "format": "int32"
+        }
+      },
+      "required": [
+        "currentBuyer",
+        "pastBuyers",
+        "_id",
+        "name",
+        "tokenId",
+        "timestamp",
+        "sale",
+        "paintingID",
+        "__v"
+      ]
+    },
+    "Sale2": {
+      "title": "Sale2",
+      "example": {
+        "price": 50,
+        "orderID": "",
+        "captureID": "",
+        "sold": false,
+        "_id": "60f7a7fe14b41631d860ce85",
+        "active": true
+      },
+      "type": "object",
+      "properties": {
+        "price": {
+          "type": "integer",
+          "format": "int32"
+        },
+        "orderID": {
+          "type": "string"
+        },
+        "captureID": {
+          "type": "string"
+        },
+        "sold": {
+          "type": "boolean"
+        },
+        "_id": {
+          "type": "string"
+        },
+        "active": {
+          "type": "boolean"
+        }
+      },
+      "required": ["price", "orderID", "captureID", "sold", "_id", "active"]
+    },
+    "MintByPaintingId": {
+      "title": "MintByPaintingId",
+      "example": {
+        "mints": [
+          {
+            "currentBuyer": "",
+            "pastBuyers": [],
+            "_id": "60f7a7fe14b41631d860ce84",
+            "name": "mint",
+            "tokenId": "token#1",
+            "timestamp": "2021-06-17T06:44:37.106Z",
+            "sale": {
+              "price": 50,
+              "orderID": "",
+              "captureID": "",
+              "sold": false,
+              "_id": "60f7a7fe14b41631d860ce85",
+              "active": true
+            },
+            "paintingID": "60f6a88ca814f0711fbc87ef",
+            "__v": 0
+          }
+        ],
+        "totalPages": 1,
+        "totalNumberOfMints": 1
+      },
+      "type": "object",
+      "properties": {
+        "mints": {
+          "type": "array",
+          "items": {
+            "$ref": "#/definitions/Mint1"
+          }
+        },
+        "totalPages": {
+          "type": "integer",
+          "format": "int32"
+        },
+        "totalNumberOfMints": {
+          "type": "integer",
+          "format": "int32"
+        }
+      },
+      "required": ["mints", "totalPages", "totalNumberOfMints"]
+    },
+    "Mint1": {
+      "title": "Mint1",
+      "example": {
+        "currentBuyer": "",
+        "pastBuyers": [],
+        "_id": "60f7a7fe14b41631d860ce84",
+        "name": "mint",
+        "tokenId": "token#1",
+        "timestamp": "2021-06-17T06:44:37.106Z",
+        "sale": {
+          "price": 50,
+          "orderID": "",
+          "captureID": "",
+          "sold": false,
+          "_id": "60f7a7fe14b41631d860ce85",
+          "active": true
+        },
+        "paintingID": "60f6a88ca814f0711fbc87ef",
+        "__v": 0
+      },
+      "type": "object",
+      "properties": {
+        "currentBuyer": {
+          "type": "string"
+        },
+        "pastBuyers": {
+          "type": "array",
+          "items": {
+            "type": "string"
+          }
+        },
+        "_id": {
+          "type": "string"
+        },
+        "name": {
+          "type": "string"
+        },
+        "tokenId": {
+          "type": "string"
+        },
+        "timestamp": {
+          "type": "string"
+        },
+        "sale": {
+          "$ref": "#/definitions/Sale2"
+        },
+        "paintingID": {
+          "type": "string"
+        },
+        "__v": {
+          "type": "integer",
+          "format": "int32"
+        }
+      },
+      "required": [
+        "currentBuyer",
+        "pastBuyers",
+        "_id",
+        "name",
+        "tokenId",
+        "timestamp",
+        "sale",
+        "paintingID",
+        "__v"
+      ]
+    },
+    "AddTransactiontoCollectionPaintingsRequest": {
+      "title": "AddTransactiontoCollectionPaintingsRequest",
+      "example": {
+        "transactionId": "ASCRERGVWE1CR23"
+      },
+      "type": "object",
+      "properties": {
+        "transactionId": {
+          "type": "string"
+        }
+      },
+      "required": ["transactionId"]
+    },
+    "AddTransactionPaintingsRequest": {
+      "title": "AddTransactionPaintingsRequest",
+      "example": {
+        "transactionId": "ASCRERGVWE1CR23"
+      },
+      "type": "object",
+      "properties": {
+        "transactionId": {
+          "type": "string"
+        }
+      },
+      "required": ["transactionId"]
+    },
+    "AddTransactionPaintings": {
+      "title": "AddTransactionPaintings",
+      "example": {
+        "n": 2,
+        "nModified": 2,
+        "ok": 1
+      },
+      "type": "object",
+      "properties": {
+        "n": {
+          "type": "integer",
+          "format": "int32"
+        },
+        "nModified": {
+          "type": "integer",
+          "format": "int32"
+        },
+        "ok": {
+          "type": "integer",
+          "format": "int32"
+        }
+      },
+      "required": ["n", "nModified", "ok"]
+    },
+    "WorldRequest": {
+      "title": "WorldRequest",
+      "example": {
+        "name": "Everscapes",
+        "tagline": "The home of fantasy, sci-fi and Horror",
+        "description": "It is a long established fact that a reader will be distracted by the readable content of a page when looking at its layout.",
+        "logo": "http://localhost:5000/everscapes"
+      },
+      "type": "object",
+      "properties": {
+        "name": {
+          "type": "string"
+        },
+        "tagline": {
+          "type": "string"
+        },
+        "description": {
+          "type": "string"
+        },
+        "logo": {
+          "type": "string"
+        }
+      },
+      "required": ["name", "tagline", "description", "logo"]
+    },
+    "CreateWorld": {
+      "title": "CreateWorld",
+      "example": {
+        "message": "World Everscapes created successfully"
+      },
+      "type": "object",
+      "properties": {
+        "message": {
+          "type": "string"
+        }
+      },
+      "required": ["message"]
+    },
+    "World": {
+      "title": "World",
+      "example": {
+        "worlds": [
+          {
+            "artists": [],
+            "drops": [],
+            "_id": "60f691069be5bf32e40668db",
+            "name": "Everscapes",
+            "description": "It is a long established fact that a reader will be distracted by the readable content of a page when looking at its layout.",
+            "logo": "http://localhost:5000/everscapes",
+            "tagline": "The home of fantasy, sci-fi and Horror",
+            "__v": 0
+          }
+        ],
+        "totalNumberOfWorlds": 1,
+        "numberOfPages": 1
+      },
+      "type": "object",
+      "properties": {
+        "worlds": {
+          "type": "array",
+          "items": {
+            "$ref": "#/definitions/World1"
+          }
+        },
+        "totalNumberOfWorlds": {
+          "type": "integer",
+          "format": "int32"
+        },
+        "numberOfPages": {
+          "type": "integer",
+          "format": "int32"
+        }
+      },
+      "required": ["worlds", "totalNumberOfWorlds", "numberOfPages"]
+    },
+    "World1": {
+      "title": "World1",
+      "example": {
+        "artists": [],
+        "drops": [],
+        "_id": "60f691069be5bf32e40668db",
+        "name": "Everscapes",
+        "description": "It is a long established fact that a reader will be distracted by the readable content of a page when looking at its layout.",
+        "logo": "http://localhost:5000/everscapes",
+        "tagline": "The home of fantasy, sci-fi and Horror",
+        "__v": 0
+      },
+      "type": "object",
+      "properties": {
+        "artists": {
+          "type": "array",
+          "items": {
+            "type": "string"
+          }
+        },
+        "drops": {
+          "type": "array",
+          "items": {
+            "type": "string"
+          }
+        },
+        "_id": {
+          "type": "string"
+        },
+        "name": {
+          "type": "string"
+        },
+        "description": {
+          "type": "string"
+        },
+        "logo": {
+          "type": "string"
+        },
+        "tagline": {
+          "type": "string"
+        },
+        "__v": {
+          "type": "integer",
+          "format": "int32"
+        }
+      },
+      "required": [
+        "artists",
+        "drops",
+        "_id",
+        "name",
+        "description",
+        "logo",
+        "tagline",
+        "__v"
+      ]
+    },
+    "WorldRequest1": {
+      "title": "WorldRequest1",
+      "example": {
+        "tagline": "Update the line",
+        "artists": ["60c9c52fa8d37a6a003637fd"],
+        "drops": ["60c9c52fa8d37a6a003637fd"]
+      },
+      "type": "object",
+      "properties": {
+        "tagline": {
+          "type": "string"
+        },
+        "artists": {
+          "type": "array",
+          "items": {
+            "type": "string"
+          }
+        },
+        "drops": {
+          "type": "array",
+          "items": {
+            "type": "string"
+          }
+        }
+      },
+      "required": ["tagline", "artists", "drops"]
+    },
+    "World2": {
+      "title": "World2",
+      "example": {
+        "message": "World updated successfully"
+      },
+      "type": "object",
+      "properties": {
+        "message": {
+          "type": "string"
+        }
+      },
+      "required": ["message"]
+    },
+    "DropRequest": {
+      "title": "DropRequest",
+      "example": {
+        "name": "Fantasy Launch Drop",
+        "releaseTime": "Wed Jul 21 2021 14:41:52 GMT+0530 (India Standard Time)",
+        "logo": "http://localhost:5000/drop-wall",
+        "worldID": "60f695d436d46436a3e6971b"
+      },
+      "type": "object",
+      "properties": {
+        "name": {
+          "type": "string"
+        },
+        "releaseTime": {
+          "type": "string"
+        },
+        "logo": {
+          "type": "string"
+        },
+        "worldID": {
+          "type": "string"
+        }
+      },
+      "required": ["name", "releaseTime", "logo", "worldID"]
+    },
+    "Drop": {
+      "title": "Drop",
+      "example": {
+        "message": "Drop created successfully"
+      },
+      "type": "object",
+      "properties": {
+        "message": {
+          "type": "string"
+        }
+      },
+      "required": ["message"]
+    },
+    "Drop1": {
+      "title": "Drop1",
+      "example": {
+        "paintings": [],
+        "collections": [],
+        "artists": [],
+        "_id": "60f7e5281be29a3d2d349d3f",
+        "name": "Fantasy Launch Drop",
+        "releaseTime": "2021-07-21T09:11:52Z",
+        "logo": "http://localhost:5000/drop-wall",
+        "worldID": "60f695d436d46436a3e6971b",
+        "__v": 0
+      },
+      "type": "object",
+      "properties": {
+        "paintings": {
+          "type": "array",
+          "items": {
+            "type": "string"
+          }
+        },
+        "collections": {
+          "type": "array",
+          "items": {
+            "type": "string"
+          }
+        },
+        "artists": {
+          "type": "array",
+          "items": {
+            "type": "string"
+          }
+        },
+        "_id": {
+          "type": "string"
+        },
+        "name": {
+          "type": "string"
+        },
+        "releaseTime": {
+          "type": "string"
+        },
+        "logo": {
+          "type": "string"
+        },
+        "worldID": {
+          "type": "string"
+        },
+        "__v": {
+          "type": "integer",
+          "format": "int32"
+        }
+      },
+      "required": [
+        "paintings",
+        "collections",
+        "artists",
+        "_id",
+        "name",
+        "releaseTime",
+        "logo",
+        "worldID",
+        "__v"
+      ]
+    },
+    "DropRequest1": {
+      "title": "DropRequest1",
+      "example": {
+        "releaseTime": "2021-07-22T09:11:52Z"
+      },
+      "type": "object",
+      "properties": {
+        "releaseTime": {
+          "type": "string"
+        }
+      },
+      "required": ["releaseTime"]
+    },
+    "AddidstoDropRequest": {
+      "title": "AddidstoDropRequest",
+      "example": {
+        "paintingIDs": ["60f6c507e5c11d3fc1f5d25e"],
+        "collectionIDs": ["60f6bba5c5d5ef33e8edfd40"],
+        "artistIDs": ["60f69d63d75352405fe01e89"]
+      },
+      "type": "object",
+      "properties": {
+        "paintingIDs": {
+          "type": "array",
+          "items": {
+            "type": "string"
+          }
+        },
+        "collectionIDs": {
+          "type": "array",
+          "items": {
+            "type": "string"
+          }
+        },
+        "artistIDs": {
+          "type": "array",
+          "items": {
+            "type": "string"
+          }
+        }
+      },
+      "required": ["paintingIDs", "collectionIDs", "artistIDs"]
+    },
+    "AddidstoDrop": {
+      "title": "AddidstoDrop",
+      "example": {
+        "message": "Drop updated successfully"
+      },
+      "type": "object",
+      "properties": {
+        "message": {
+          "type": "string"
+        }
+      },
+      "required": ["message"]
+    },
+    "Droppaintings": {
+      "title": "Droppaintings",
+      "example": {
+        "paintings": [
+          {
+            "mints": ["60f7a8b214b41631d860ce8a", "60f7a8b214b41631d860ce8c"],
+            "_id": "60f6c507e5c11d3fc1f5d25e",
+            "dropDate": "2016-05-18T16:00:00Z",
+            "genre": "Sci-fi",
+            "image": "http://localhost:5000/imageLink",
+            "file": "http://localhost:5000/fileLink",
+            "title": "Simp's masterpiece",
+            "theme": "red",
+            "set": 15,
+            "pieceNumber": 150,
+            "pointVal": 200,
+            "description": "It is a long established fact that a reader will be distracted by the readable content of a page when looking at its layout.",
+            "format": "format",
+            "size": "Large",
+            "rarity": "Jewel",
+            "fileType": "PNG",
+            "fractionalOwnership": "false",
+            "allowStaking": "true",
+            "artistID": "60f69d63d75352405fe01e89",
+            "collectionID": "60f6bba5c5d5ef33e8edfd40",
+            "worldID": "60f695d436d46436a3e6971b",
+            "__v": 0
+          },
+          {
+            "mints": ["60f7a8b214b41631d860ce8a", "60f7a8b214b41631d860ce8c"],
+            "_id": "60f6c507e5c11d3fc1f5d25e",
+            "dropDate": "2016-05-18T16:00:00Z",
+            "genre": "Sci-fi",
+            "image": "http://localhost:5000/imageLink",
+            "file": "http://localhost:5000/fileLink",
+            "title": "Simp's masterpiece",
+            "theme": "red",
+            "set": 15,
+            "pieceNumber": 150,
+            "pointVal": 200,
+            "description": "It is a long established fact that a reader will be distracted by the readable content of a page when looking at its layout.",
+            "format": "format",
+            "size": "Large",
+            "rarity": "Jewel",
+            "fileType": "PNG",
+            "fractionalOwnership": "false",
+            "allowStaking": "true",
+            "artistID": "60f69d63d75352405fe01e89",
+            "collectionID": "60f6bba5c5d5ef33e8edfd40",
+            "worldID": "60f695d436d46436a3e6971b",
+            "__v": 0
+          }
+        ],
+        "totalNumberOfPaintings": 2,
+        "numberOfPages": 1
+      },
+      "type": "object",
+      "properties": {
+        "paintings": {
+          "type": "array",
+          "items": {
+            "$ref": "#/definitions/Painting1"
+          }
+        },
+        "totalNumberOfPaintings": {
+          "type": "integer",
+          "format": "int32"
+        },
+        "numberOfPages": {
+          "type": "integer",
+          "format": "int32"
+        }
+      },
+      "required": ["paintings", "totalNumberOfPaintings", "numberOfPages"]
+    },
+    "Paintings": {
+      "title": "Paintings",
+      "example": {
+        "paintings": [
+          {
+            "mints": [
+              {
+                "_id": "60f7a7fe14b41631d860ce84",
+                "name": "mint",
+                "sale": {
+                  "price": 50,
+                  "orderID": "",
+                  "captureID": "",
+                  "sold": false,
+                  "_id": "60f7a7fe14b41631d860ce85",
+                  "active": true
+                }
+              },
+              {
+                "_id": "60f7a7fe14b41631d860ce86",
+                "name": "mint",
+                "sale": {
+                  "price": 50,
+                  "orderID": "",
+                  "captureID": "",
+                  "sold": false,
+                  "_id": "60f7a7fe14b41631d860ce87",
+                  "active": true
+                }
+              }
+            ],
+            "_id": "60f6a88ca814f0711fbc87ef",
+            "dropDate": "2016-05-18T16:00:00Z",
+            "genre": "Sci-fi",
+            "image": "http://localhost:5000/imageLink",
+            "file": "http://localhost:5000/fileLink",
+            "title": "Simp's masterpiece",
+            "theme": "red",
+            "set": 15,
+            "pieceNumber": 150,
+            "pointVal": 200,
+            "description": "It is a long established fact that a reader will be distracted by the readable content of a page when looking at its layout.",
+            "format": "format",
+            "size": "Large",
+            "rarity": "Jewel",
+            "fileType": "PNG",
+            "fractionalOwnership": "false",
+            "allowStaking": "true",
+            "artistID": "60f69d63d75352405fe01e89",
+            "worldID": "60f695d436d46436a3e6971b",
+            "__v": 0,
+            "minPrice": 50
+          },
+          {
+            "mints": [
+              {
+                "_id": "60f7a8b214b41631d860ce8a",
+                "name": "mint1",
+                "sale": {
+                  "price": 0,
+                  "orderID": "",
+                  "captureID": "",
+                  "sold": false,
+                  "_id": "60f7a8b214b41631d860ce8b",
+                  "active": false
+                }
+              },
+              {
+                "_id": "60f7a8b214b41631d860ce8c",
+                "name": "mint2",
+                "sale": {
+                  "price": 0,
+                  "orderID": "",
+                  "captureID": "",
+                  "sold": false,
+                  "_id": "60f7a8b214b41631d860ce8d",
+                  "active": false
+                }
+              }
+            ],
+            "_id": "60f6c507e5c11d3fc1f5d25e",
+            "dropDate": "2016-05-18T16:00:00Z",
+            "genre": "Sci-fi",
+            "image": "http://localhost:5000/imageLink",
+            "file": "http://localhost:5000/fileLink",
+            "title": "Simp's masterpiece",
+            "theme": "red",
+            "set": 15,
+            "pieceNumber": 150,
+            "pointVal": 200,
+            "description": "It is a long established fact that a reader will be distracted by the readable content of a page when looking at its layout.",
+            "format": "format",
+            "size": "Large",
+            "rarity": "Jewel",
+            "fileType": "PNG",
+            "fractionalOwnership": "false",
+            "allowStaking": "true",
+            "artistID": "60f69d63d75352405fe01e89",
+            "collectionID": "60f6bba5c5d5ef33e8edfd40",
+            "worldID": "60f695d436d46436a3e6971b",
+            "__v": 0,
+            "minPrice": 0
+          }
+        ],
+        "numberOfPages": 1,
+        "totalNumberOfPaintings": 2
+      },
+      "type": "object",
+      "properties": {
+        "paintings": {
+          "type": "array",
+          "items": {
+            "$ref": "#/definitions/Paintings1"
+          }
+        },
+        "numberOfPages": {
+          "type": "integer",
+          "format": "int32"
+        },
+        "totalNumberOfPaintings": {
+          "type": "integer",
+          "format": "int32"
+        }
+      },
+      "required": ["paintings", "numberOfPages", "totalNumberOfPaintings"]
+    },
+    "Paintings1": {
+      "title": "Paintings1",
+      "example": {
+        "mints": [
+          {
+            "_id": "60f7a7fe14b41631d860ce84",
+            "name": "mint",
+            "sale": {
+              "price": 50,
+              "orderID": "",
+              "captureID": "",
+              "sold": false,
+              "_id": "60f7a7fe14b41631d860ce85",
+              "active": true
+            }
+          },
+          {
+            "_id": "60f7a7fe14b41631d860ce86",
+            "name": "mint",
+            "sale": {
+              "price": 50,
+              "orderID": "",
+              "captureID": "",
+              "sold": false,
+              "_id": "60f7a7fe14b41631d860ce87",
+              "active": true
+            }
+          }
+        ],
+        "_id": "60f6a88ca814f0711fbc87ef",
+        "dropDate": "2016-05-18T16:00:00Z",
+        "genre": "Sci-fi",
+        "image": "http://localhost:5000/imageLink",
+        "file": "http://localhost:5000/fileLink",
+        "title": "Simp's masterpiece",
+        "theme": "red",
+        "set": 15,
+        "pieceNumber": 150,
+        "pointVal": 200,
+        "description": "It is a long established fact that a reader will be distracted by the readable content of a page when looking at its layout.",
+        "format": "format",
+        "size": "Large",
+        "rarity": "Jewel",
+        "fileType": "PNG",
+        "fractionalOwnership": "false",
+        "allowStaking": "true",
+        "artistID": "60f69d63d75352405fe01e89",
+        "worldID": "60f695d436d46436a3e6971b",
+        "__v": 0,
+        "minPrice": 50
+      },
+      "type": "object",
+      "properties": {
+        "mints": {
+          "type": "array",
+          "items": {
+            "$ref": "#/definitions/Mint2"
+          }
+        },
+        "_id": {
+          "type": "string"
+        },
+        "dropDate": {
+          "type": "string"
+        },
+        "genre": {
+          "type": "string"
+        },
+        "image": {
+          "type": "string"
+        },
+        "file": {
+          "type": "string"
+        },
+        "title": {
+          "type": "string"
+        },
+        "theme": {
+          "type": "string"
+        },
+        "set": {
+          "type": "integer",
+          "format": "int32"
+        },
+        "pieceNumber": {
+          "type": "integer",
+          "format": "int32"
+        },
+        "pointVal": {
+          "type": "integer",
+          "format": "int32"
+        },
+        "description": {
+          "type": "string"
+        },
+        "format": {
+          "type": "string"
+        },
+        "size": {
+          "type": "string"
+        },
+        "rarity": {
+          "type": "string"
+        },
+        "fileType": {
+          "type": "string"
+        },
+        "fractionalOwnership": {
+          "type": "string"
+        },
+        "allowStaking": {
+          "type": "string"
+        },
+        "artistID": {
+          "type": "string"
+        },
+        "worldID": {
+          "type": "string"
+        },
+        "__v": {
+          "type": "integer",
+          "format": "int32"
+        },
+        "minPrice": {
+          "type": "integer",
+          "format": "int32"
+        },
+        "collectionID": {
+          "type": "string"
+        }
+      },
+      "required": [
+        "mints",
+        "_id",
+        "dropDate",
+        "genre",
+        "image",
+        "file",
+        "title",
+        "theme",
+        "set",
+        "pieceNumber",
+        "pointVal",
+        "description",
+        "format",
+        "size",
+        "rarity",
+        "fileType",
+        "fractionalOwnership",
+        "allowStaking",
+        "artistID",
+        "worldID",
+        "__v",
+        "minPrice"
+      ]
+    },
+    "Mint2": {
+      "title": "Mint2",
+      "example": {
+        "_id": "60f7a7fe14b41631d860ce84",
+        "name": "mint",
+        "sale": {
+          "price": 50,
+          "orderID": "",
+          "captureID": "",
+          "sold": false,
+          "_id": "60f7a7fe14b41631d860ce85",
+          "active": true
+        }
+      },
+      "type": "object",
+      "properties": {
+        "_id": {
+          "type": "string"
+        },
+        "name": {
+          "type": "string"
+        },
+        "sale": {
+          "$ref": "#/definitions/Sale2"
+        }
+      },
+      "required": ["_id", "name", "sale"]
+    },
+    "Drop3": {
+      "title": "Drop3",
+      "example": {
+        "drops": [
+          {
+            "paintings": [
+              "60f6c507e5c11d3fc1f5d25e",
+              "60f6c507e5c11d3fc1f5d25e"
+            ],
+            "collections": [
+              "60f6bba5c5d5ef33e8edfd40",
+              "60f6bba5c5d5ef33e8edfd40"
+            ],
+            "artists": ["60f69d63d75352405fe01e89", "60f69d63d75352405fe01e89"],
+            "_id": "60f80125727a4a60d8d1618b",
+            "name": "Fantasy Launch Drop",
+            "releaseTime": "2021-07-22T09:11:52Z",
+            "logo": "http://localhost:5000/drop-wall",
+            "worldID": "60f695d436d46436a3e6971b",
+            "__v": 0
+          }
+        ],
+        "totalNumberOfDrops": 1,
+        "numberOfPages": 1
+      },
+      "type": "object",
+      "properties": {
+        "drops": {
+          "type": "array",
+          "items": {
+            "$ref": "#/definitions/Drop1"
+          }
+        },
+        "totalNumberOfDrops": {
+          "type": "integer",
+          "format": "int32"
+        },
+        "numberOfPages": {
+          "type": "integer",
+          "format": "int32"
+        }
+      },
+      "required": ["drops", "totalNumberOfDrops", "numberOfPages"]
+    },
+    "Droppaintings1": {
+      "title": "Droppaintings1",
+      "example": {
+        "paintings": [
+          {
+            "mints": ["60f7a8b214b41631d860ce8a", "60f7a8b214b41631d860ce8c"],
+            "_id": "60f6c507e5c11d3fc1f5d25e",
+            "dropDate": "2016-05-18T16:00:00Z",
+            "genre": "Sci-fi",
+            "image": "http://localhost:5000/imageLink",
+            "file": "http://localhost:5000/fileLink",
+            "title": "Simp's masterpiece",
+            "theme": "red",
+            "set": 15,
+            "pieceNumber": 150,
+            "pointVal": 200,
+            "description": "It is a long established fact that a reader will be distracted by the readable content of a page when looking at its layout.",
+            "format": "format",
+            "size": "Large",
+            "rarity": "Jewel",
+            "fileType": "PNG",
+            "fractionalOwnership": "false",
+            "allowStaking": "true",
+            "artistID": "60f69d63d75352405fe01e89",
+            "collectionID": "60f6bba5c5d5ef33e8edfd40",
+            "worldID": "60f695d436d46436a3e6971b",
+            "__v": 0
+          },
+          {
+            "mints": ["60f7a8b214b41631d860ce8a", "60f7a8b214b41631d860ce8c"],
+            "_id": "60f6c507e5c11d3fc1f5d25e",
+            "dropDate": "2016-05-18T16:00:00Z",
+            "genre": "Sci-fi",
+            "image": "http://localhost:5000/imageLink",
+            "file": "http://localhost:5000/fileLink",
+            "title": "Simp's masterpiece",
+            "theme": "red",
+            "set": 15,
+            "pieceNumber": 150,
+            "pointVal": 200,
+            "description": "It is a long established fact that a reader will be distracted by the readable content of a page when looking at its layout.",
+            "format": "format",
+            "size": "Large",
+            "rarity": "Jewel",
+            "fileType": "PNG",
+            "fractionalOwnership": "false",
+            "allowStaking": "true",
+            "artistID": "60f69d63d75352405fe01e89",
+            "collectionID": "60f6bba5c5d5ef33e8edfd40",
+            "worldID": "60f695d436d46436a3e6971b",
+            "__v": 0
+          }
+        ],
+        "totalNumberOfPaintings": 2,
+        "numberOfPages": 1
+      },
+      "type": "object",
+      "properties": {
+        "paintings": {
+          "type": "array",
+          "items": {
+            "$ref": "#/definitions/Paintings2"
+          }
+        },
+        "totalNumberOfPaintings": {
+          "type": "integer",
+          "format": "int32"
+        },
+        "numberOfPages": {
+          "type": "integer",
+          "format": "int32"
+        }
+      },
+      "required": ["paintings", "totalNumberOfPaintings", "numberOfPages"]
+    },
+    "Paintings2": {
+      "title": "Paintings2",
+      "example": {
+        "mints": ["60f7a8b214b41631d860ce8a", "60f7a8b214b41631d860ce8c"],
+        "_id": "60f6c507e5c11d3fc1f5d25e",
+        "dropDate": "2016-05-18T16:00:00Z",
+        "genre": "Sci-fi",
+        "image": "http://localhost:5000/imageLink",
+        "file": "http://localhost:5000/fileLink",
+        "title": "Simp's masterpiece",
+        "theme": "red",
+        "set": 15,
+        "pieceNumber": 150,
+        "pointVal": 200,
+        "description": "It is a long established fact that a reader will be distracted by the readable content of a page when looking at its layout.",
+        "format": "format",
+        "size": "Large",
+        "rarity": "Jewel",
+        "fileType": "PNG",
+        "fractionalOwnership": "false",
+        "allowStaking": "true",
+        "artistID": "60f69d63d75352405fe01e89",
+        "collectionID": "60f6bba5c5d5ef33e8edfd40",
+        "worldID": "60f695d436d46436a3e6971b",
+        "__v": 0
+      },
+      "type": "object",
+      "properties": {
+        "mints": {
+          "type": "array",
+          "items": {
+            "type": "string"
+          }
+        },
+        "_id": {
+          "type": "string"
+        },
+        "dropDate": {
+          "type": "string"
+        },
+        "genre": {
+          "type": "string"
+        },
+        "image": {
+          "type": "string"
+        },
+        "file": {
+          "type": "string"
+        },
+        "title": {
+          "type": "string"
+        },
+        "theme": {
+          "type": "string"
+        },
+        "set": {
+          "type": "integer",
+          "format": "int32"
+        },
+        "pieceNumber": {
+          "type": "integer",
+          "format": "int32"
+        },
+        "pointVal": {
+          "type": "integer",
+          "format": "int32"
+        },
+        "description": {
+          "type": "string"
+        },
+        "format": {
+          "type": "string"
+        },
+        "size": {
+          "type": "string"
+        },
+        "rarity": {
+          "type": "string"
+        },
+        "fileType": {
+          "type": "string"
+        },
+        "fractionalOwnership": {
+          "type": "string"
+        },
+        "allowStaking": {
+          "type": "string"
+        },
+        "artistID": {
+          "type": "string"
+        },
+        "collectionID": {
+          "type": "string"
+        },
+        "worldID": {
+          "type": "string"
+        },
+        "__v": {
+          "type": "integer",
+          "format": "int32"
+        }
+      },
+      "required": [
+        "mints",
+        "_id",
+        "dropDate",
+        "genre",
+        "image",
+        "file",
+        "title",
+        "theme",
+        "set",
+        "pieceNumber",
+        "pointVal",
+        "description",
+        "format",
+        "size",
+        "rarity",
+        "fileType",
+        "fractionalOwnership",
+        "allowStaking",
+        "artistID",
+        "collectionID",
+        "worldID",
+        "__v"
+      ]
+    },
+    "GetArtistPainting/2": {
+      "title": "GetArtistPainting/2",
+      "example": {
+        "_id": "60c98fcc8b6415714bbabaaa",
+        "paintings": [
+          {
+            "_id": "60c9a55d3c2f6119f780f836",
+            "image": "imageLink",
+            "file": "fileLink",
+            "title": "Abhinav's masterpiece",
+            "year": 2000,
+            "theme": "red",
+            "set": 15,
+            "pieceNumber": 150,
+            "pointVal": 200,
+            "description": "description",
+            "format": "format",
+            "size": "2px",
+            "rarity": "highly exp",
+            "fileType": "PNG",
+            "fractionalOwnership": "false",
+            "allowStaking": "true",
+            "artistID": "60c98fcc8b6415714bbabaaa",
+            "mints": []
+          }
+        ]
+      },
+      "type": "object",
+      "properties": {
+        "_id": {
+          "type": "string"
+        },
+        "paintings": {
+          "type": "array",
+          "items": {
+            "$ref": "#/definitions/Paintings3"
+          }
+        }
+      },
+      "required": ["_id", "paintings"]
+    },
+    "Paintings3": {
+      "title": "Paintings3",
+      "example": {
+        "_id": "60c9a55d3c2f6119f780f836",
+        "image": "imageLink",
+        "file": "fileLink",
+        "title": "Abhinav's masterpiece",
+        "year": 2000,
+        "theme": "red",
+        "set": 15,
+        "pieceNumber": 150,
+        "pointVal": 200,
+        "description": "description",
+        "format": "format",
+        "size": "2px",
+        "rarity": "highly exp",
+        "fileType": "PNG",
+        "fractionalOwnership": "false",
+        "allowStaking": "true",
+        "artistID": "60c98fcc8b6415714bbabaaa",
+        "mints": []
+      },
+      "type": "object",
+      "properties": {
+        "_id": {
+          "type": "string"
+        },
+        "image": {
+          "type": "string"
+        },
+        "file": {
+          "type": "string"
+        },
+        "title": {
+          "type": "string"
+        },
+        "year": {
+          "type": "integer",
+          "format": "int32"
+        },
+        "theme": {
+          "type": "string"
+        },
+        "set": {
+          "type": "integer",
+          "format": "int32"
+        },
+        "pieceNumber": {
+          "type": "integer",
+          "format": "int32"
+        },
+        "pointVal": {
+          "type": "integer",
+          "format": "int32"
+        },
+        "description": {
+          "type": "string"
+        },
+        "format": {
+          "type": "string"
+        },
+        "size": {
+          "type": "string"
+        },
+        "rarity": {
+          "type": "string"
+        },
+        "fileType": {
+          "type": "string"
+        },
+        "fractionalOwnership": {
+          "type": "string"
+        },
+        "allowStaking": {
+          "type": "string"
+        },
+        "artistID": {
+          "type": "string"
+        },
+        "mints": {
+          "type": "array",
+          "items": {
+            "type": "string"
+          }
+        }
+      },
+      "required": [
+        "_id",
+        "image",
+        "file",
+        "title",
+        "year",
+        "theme",
+        "set",
+        "pieceNumber",
+        "pointVal",
+        "description",
+        "format",
+        "size",
+        "rarity",
+        "fileType",
+        "fractionalOwnership",
+        "allowStaking",
+        "artistID",
+        "mints"
+      ]
+    },
+    "GetCollectionPaintings1": {
+      "title": "GetCollectionPaintings1",
+      "example": {
+        "paintings": [
+          {
+            "mints": [],
+            "_id": "60f6c507e5c11d3fc1f5d25e",
+            "dropDate": "2016-05-18T16:00:00Z",
+            "genre": "Sci-fi",
+            "image": "http://localhost:5000/imageLink",
+            "file": "http://localhost:5000/fileLink",
+            "title": "Simp's masterpiece",
+            "theme": "red",
+            "set": 15,
+            "pieceNumber": 150,
+            "pointVal": 200,
+            "description": "It is a long established fact that a reader will be distracted by the readable content of a page when looking at its layout.",
+            "format": "format",
+            "size": "Large",
+            "rarity": "Jewel",
+            "fileType": "PNG",
+            "fractionalOwnership": "false",
+            "allowStaking": "true",
+            "artistID": "60f69d63d75352405fe01e89",
+            "collectionID": "60f6bba5c5d5ef33e8edfd40",
+            "worldID": "60f695d436d46436a3e6971b",
+            "__v": 0
+          }
+        ],
+        "Total": 1,
+        "NumberOfPages": 1
+      },
+      "type": "object",
+      "properties": {
+        "paintings": {
+          "type": "array",
+          "items": {
+            "$ref": "#/definitions/Paintings2"
+          }
+        },
+        "Total": {
+          "type": "integer",
+          "format": "int32"
+        },
+        "NumberOfPages": {
+          "type": "integer",
+          "format": "int32"
+        }
+      },
+      "required": ["paintings", "Total", "NumberOfPages"]
+    }
+  },
+  "tags": [
+    {
+      "name": "Artist"
+    },
+    {
+      "name": "Painting"
+    },
+    {
+      "name": "Collection"
+    },
+    {
+      "name": "Mint"
+    },
+    {
+      "name": "Transaction"
+    },
+    {
+      "name": "Worlds"
+    },
+    {
+      "name": "Drop"
+    },
+    {
+      "name": "Marketplace"
+    },
+    {
+      "name": "Everscapes"
+    },
+    {
+      "name": "NFT Solo Page"
+    }
+  ]
+}
